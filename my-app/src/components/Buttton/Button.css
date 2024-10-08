@@ -1,0 +1,25 @@
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: orangered;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .custom-button:hover {
+    background-color: rgb(189, 50, 0);
+  }
+  
+  .custom-button:active {
+    transform: scale(0.98);  /* Slightly shrink the button on click */
+  }
+  
+  .custom-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(189, 50, 0, 0.5);
+  }
+  
