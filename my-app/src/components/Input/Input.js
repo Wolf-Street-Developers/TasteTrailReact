@@ -22,7 +22,7 @@ function Input({value, onChange, placeholder, canBeHidden, maxLength, required})
         maxLength={maxLength}
         required={required}
       />
-      {canBeHidden && <button className="toggle-button" onClick={toggleVisibility}>
+      {canBeHidden && <button className="toggle-button" onClick={toggleVisibility} type='button'>
         {isVisible ? <IoMdEye/> : <IoMdEyeOff/>}
       </button>}
     </div>

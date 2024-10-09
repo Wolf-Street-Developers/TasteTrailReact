@@ -1,11 +1,12 @@
 import { useState } from "react";
-import "./LogInForm.css"
+import "./SignUpForm.css"
 import Input from "../Input/Input";
 import Button from "../Buttton/Button";
-import { login } from "../../api/authService";
+import { register } from "../../api/authService";
 import { useNavigate } from 'react-router-dom';
 
-const LogInForm = () => {
+const SignUpForm = () => {
+    const [userName, setUserName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -14,12 +15,14 @@ const LogInForm = () => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         
-        login(email, password).then(()=>{navigate('/')}).catch(() => {})
+        register(userName, email, password).then(()=>{navigate('/')}).catch(() => {})
     }
 
     return (
       <div className="Log-in-container">
         <form onSubmit={handleSubmit}>
+          <label>Your username</label>
+          <Input value = {userName} onChange={(e)=>setUserName(e.target.value)} placeHolder="Name" required/>
           <label>Email</label>
           <Input value = {email} onChange={(e)=>setEmail(e.target.value)} placeHolder="Email" required/>
           <label>Password</label>
@@ -33,5 +36,5 @@ const LogInForm = () => {
   };
   
   
-export default LogInForm
+export default SignUpForm
   

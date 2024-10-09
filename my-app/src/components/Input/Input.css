@@ -7,7 +7,7 @@
   
   .styled-input {
     padding: 10px;
-    border: 2px solid #007BFF;
+    border: 2px solid orangered;
     border-radius: 5px;
     outline: none;
     width: 200px;
@@ -15,7 +15,7 @@
   }
   
   .styled-input:focus {
-    border-color: #0056b3;
+    border-color: orange;
   }
   
   .toggle-button {
