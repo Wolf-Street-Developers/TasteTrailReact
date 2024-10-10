@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import NoPage from "./pages/NoPage";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
+import Menu from "./pages/Menu";
+import User from "./pages/User";
 import Header from "./components/Header/Header";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +20,8 @@ function App() {
           <Route path="*" element={<NoPage />} />
           <Route path="logIn" element={<LogIn />} />
           <Route path="signUp" element={<SignUp />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="user" element={<User />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />

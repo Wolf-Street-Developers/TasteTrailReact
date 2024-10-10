@@ -2,25 +2,25 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_URL = "http://20.123.63.95:5000";  // Your API base URL
+const API_URL = "http://20.123.63.95:5000";
 
 export const getUserRoles = () => {
   return axios.get(
     `${API_URL}/api/User/GetUserRoles`,
   )
   .then(response => {
-    console.log(response)
+    return response
   })
   .catch(error => {
       if(error.response?.status === 400) {
         toast.error("Not authorized", {
-            position: 'bottom-right',  // Change to bottom-right
+            position: 'bottom-right',
             autoClose: 3000,  // Close after 3 seconds
             hideProgressBar: true,
         });
       } else {
         toast.error(`${error.response?.data || error.message || "Can not get user roles"}`, {
-            position: 'bottom-right',  // Change to bottom-right
+            position: 'bottom-right',
             autoClose: 3000,  // Close after 3 seconds
             hideProgressBar: true,
         });

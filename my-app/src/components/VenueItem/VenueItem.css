@@ -1,0 +1,12 @@
+.venue-item-container {
+    display: flex;
+    gap: 10px;
+}
+
+.logo {
+    width: 20%;
+}
+
+.venue-name {
+    font-size: 64px;
+}

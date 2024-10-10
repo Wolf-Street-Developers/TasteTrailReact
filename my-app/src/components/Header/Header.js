@@ -8,6 +8,8 @@ const Header = (props) => {
             <Link to="/">Home</Link>
             <Link to="logIn">Log in</Link>
             <Link to="signUp">Sign up</Link>
+            <Link to="menu">Menu</Link>
+            <Link to="user">User</Link>
         </nav>
       </div>
     );

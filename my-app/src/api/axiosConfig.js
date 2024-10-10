@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getAccessToken, refreshAccessToken } from './authService';
+import { useNavigate } from 'react-router-dom'
 
 // Set up Axios request interceptor globally
 axios.interceptors.request.use(
@@ -24,19 +25,27 @@ axios.interceptors.response.use(
     const originalRequest = error.config;
 
     // Check if the error is due to an expired token
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true; // Mark the request as retried
+    if (error.response?.status === 401) {
+      if(originalRequest._retry) {
+        originalRequest._retry = true; // Mark the request as retried
 
-      try {
-        // Attempt to refresh the token
-        const newAccessToken = await refreshAccessToken();
-        axios.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
-        originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-        return axios(originalRequest); // Retry the original request
-      } catch (err) {
-        console.error('Token refresh failed:', err);
-        // Optionally log out the user or redirect to the login page
+        try {
+          // Attempt to refresh the token
+          const newAccessToken = await refreshAccessToken();
+          axios.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+          originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+          return axios(originalRequest); // Retry the original request
+        } catch (err) {
+          console.error('Token refresh failed:', err);
+        }
+      } else{
+
       }
+    }
+    if(originalRequest._retry) {
+      const navigate = useNavigate();
+
+      navigate('/login');
     }
 
     return Promise.reject(error); // Return the error for further handling
