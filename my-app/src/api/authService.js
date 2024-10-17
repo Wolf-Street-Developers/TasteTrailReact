@@ -89,7 +89,6 @@ export const refreshAccessToken = () => {
   })
   .then(response => {
     const { jwt, refresh } = response.data;
-    console.log(response.data)
     localStorage.setItem('accessToken', jwt);
     localStorage.setItem('refreshToken', refresh);
     return jwt;

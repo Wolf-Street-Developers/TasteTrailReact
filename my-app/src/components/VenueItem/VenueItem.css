@@ -1,12 +1,14 @@
 .venue-item-container {
     display: flex;
     gap: 10px;
+    margin: 20px;
+    cursor: pointer;
 }
 
-.logo {
+.venue-item-logo {
     width: 20%;
 }
 
-.venue-name {
+.venue-item-name {
     font-size: 64px;
 }

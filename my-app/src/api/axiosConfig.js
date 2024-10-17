@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { getAccessToken, refreshAccessToken } from './authService';
-import { useNavigate } from 'react-router-dom'
 
 // Set up Axios request interceptor globally
 axios.interceptors.request.use(
@@ -23,10 +22,11 @@ axios.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-
     // Check if the error is due to an expired token
     if (error.response?.status === 401) {
-      if(originalRequest._retry) {
+      if(originalRequest._retry) {  
+        window.location = '/login';
+      } else {
         originalRequest._retry = true; // Mark the request as retried
 
         try {
@@ -38,14 +38,11 @@ axios.interceptors.response.use(
         } catch (err) {
           console.error('Token refresh failed:', err);
         }
-      } else{
-
       }
     }
-    if(originalRequest._retry) {
-      const navigate = useNavigate();
 
-      navigate('/login');
+    if(localStorage.getItem("accessToken")==="" && localStorage.getItem("refreshToken")==="") {
+      window.location = '/login';
     }
 
     return Promise.reject(error); // Return the error for further handling

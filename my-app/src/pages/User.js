@@ -7,7 +7,7 @@ import "./User.css"
 
 const User = () => {
     const [user, setUser] = useState()
-    useEffect(()=>{getUserRoles().then((u)=>{setUser(u.data.user); console.log(user)})},[])
+    useEffect(()=>{getUserRoles().then((u)=>{setUser(u.data.user)})},[])
 
     return (
         <div className="user-container">

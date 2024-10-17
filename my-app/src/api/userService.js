@@ -25,6 +25,6 @@ export const getUserRoles = () => {
             hideProgressBar: true,
         });
       }
-      throw new Error(error.response?.data?.message || "Can not get user roles");
+      throw error;
     })
 }

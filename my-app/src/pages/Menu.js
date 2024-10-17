@@ -8,7 +8,7 @@ const Menu = () => {
   useEffect(()=>{getVenues(1,1,10).then((res)=>{setVenues(res.data.entities)})},[])
   return (
     <div>
-      {venues.map((item)=><VenueItem item={item}/>)}
+      {venues.map((item)=><VenueItem item={item} key={item.id}/>)}
     </div>
     );
   };

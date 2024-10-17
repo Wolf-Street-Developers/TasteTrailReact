@@ -1,0 +1,43 @@
+.venue-container {
+    height: 200px;
+}
+
+.venue-name {
+    font-size: 64px;
+    background-color: orange;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    padding-left: 2vw;
+    padding-bottom: 1vh;
+    width: 86vw;
+}
+
+.venue-info-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    margin-left: 10vw;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 5vw;
+}
+
+.venue-info-text {
+    flex-grow: 5;
+    font-size: 20px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.venue-info-text > p {
+    padding: 10px;
+}
+
+.venue-info-img {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30vw;
+    margin: 10px;
+    border: 4px;
+    border-style: solid;
+    border-color: orange;
+}
