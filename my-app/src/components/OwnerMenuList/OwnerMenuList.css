@@ -1,0 +1,17 @@
+.owner-add-menu-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: orange;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.owner-add-menu-btn:hover {
+    background-color: rgb(194, 127, 2);
+}
+
+.owner-menu-list-title {
+    text-align: center;
+}

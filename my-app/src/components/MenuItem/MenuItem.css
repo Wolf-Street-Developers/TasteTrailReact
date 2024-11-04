@@ -1,0 +1,73 @@
+.menu-item {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 2px solid #ff7f50;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 16px 0;
+    transition: transform 0.2s;
+  }
+  
+  .menu-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .menu-item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    margin-right: 16px;
+    object-fit: cover;
+    border: 2px solid #ff7f50;
+  }
+  
+  .menu-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .menu-item-name {
+    font-size: 1.5em;
+    color: #ff7f50;
+    margin: 0;
+  }
+  
+  .menu-item-description {
+    font-size: 1em;
+    color: #333333;
+  }
+  
+  .menu-item-price {
+    font-size: 1.2em;
+    color: #ff7f50;
+    font-weight: bold;
+  }
+  
+  .menu-item-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+  
+  .like-button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #ff7f50;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .like-button:hover {
+    color: #ff4500;
+  }
+  
+  .like-button.liked {
+    color: #ff4500;
+  }
+  

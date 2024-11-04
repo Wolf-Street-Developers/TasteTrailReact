@@ -1,0 +1,28 @@
+.user-item {
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.user-item-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.user-item-info {
+    display: flex;
+    gap: 10px;
+}
+
+.user-item-info > p {
+    width: 200px;
+}
+
+.user-item-role-select {
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width: 80px;
+}

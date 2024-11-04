@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { getAccessToken, refreshAccessToken } from './authService';
 
-// Set up Axios request interceptor globally
 axios.interceptors.request.use(
   async (config) => {
     const token = getAccessToken(); // Get the access token from localStorage
@@ -15,9 +14,8 @@ axios.interceptors.request.use(
   }
 );
 
-// Set up Axios response interceptor globally
 axios.interceptors.response.use(
-  (response) => {
+  async(response) => {
     return response; // Return the response directly
   },
   async (error) => {
@@ -25,7 +23,7 @@ axios.interceptors.response.use(
     // Check if the error is due to an expired token
     if (error.response?.status === 401) {
       if(originalRequest._retry) {  
-        window.location = '/login';
+        window.location.href = '/login';
       } else {
         originalRequest._retry = true; // Mark the request as retried
 
@@ -36,13 +34,17 @@ axios.interceptors.response.use(
           originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
           return axios(originalRequest); // Retry the original request
         } catch (err) {
+          // localStorage.removeItem('accessToken');
+          // localStorage.removeItem('refreshToken');
           console.error('Token refresh failed:', err);
         }
+
+
       }
     }
 
     if(localStorage.getItem("accessToken")==="" && localStorage.getItem("refreshToken")==="") {
-      window.location = '/login';
+      window.location.href = '/login';
     }
 
     return Promise.reject(error); // Return the error for further handling

@@ -1,0 +1,44 @@
+.menu-display {
+    display: flex;
+    align-items: flex-start;
+    background-color: #ffffff;
+    border: 2px solid orangered;
+    border-radius: 8px;
+    padding: 16px;
+    width: 30vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin: 10px;
+  }
+  
+  .menu-display:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+  
+  .menu-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    margin-right: 16px;
+    object-fit: cover;
+    border: 2px solid #cfcfcf;
+  }
+  
+  .menu-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .menu-name {
+    font-size: 1.5em;
+    color: black;
+    margin: 0;
+  }
+  
+  .menu-description {
+    font-size: 1em;
+    color: #333333;
+  }
+  

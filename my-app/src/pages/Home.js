@@ -1,3 +1,5 @@
+import { refreshAccessToken } from "../api/authService";
+
 const Home = () => {
     return (
       <div className="container">
@@ -10,7 +12,7 @@ const Home = () => {
         <div className="heroContent">
           <h2 className="heroTitle">Your Next Favorite Spot Awaits</h2>
           <p className="heroText">Find honest reviews and ratings from food enthusiasts like you!</p>
-          <button className="exploreButton">Explore Restaurants</button>
+          <button className="exploreButton" onClick={refreshAccessToken}>Explore Restaurants</button>
         </div>
       </section>
 

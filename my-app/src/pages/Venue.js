@@ -17,7 +17,6 @@ const Venue = () => {
       setVenue(res.data);
       setPosition([res.data.longtitude, res.data.latitude]);
     })
-    getMenuesById(id).then((res)=>{console.log(res.data)})
   },[id])
 
 

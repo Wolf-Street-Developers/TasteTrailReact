@@ -7,10 +7,12 @@ import Menu from "./pages/Menu";
 import User from "./pages/User";
 import Venue from "./pages/Venue";
 import MyVenue from "./pages/MyVenue";
+import AdminDashboard from "./pages/AdminDashboard";
 import Header from "./components/Header/Header";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './api/axiosConfig';
+import MyMenuPage from "./pages/MyMenuPage";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="user" element={<User />} />
           <Route path="/venue/:id" element={<Venue />}/>
           <Route path="/myVenue" element={<MyVenue />}/>
+          <Route path="/myVenue/:id" element={<MyMenuPage />}/>
+          <Route path="/admin" element={<AdminDashboard />}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer />
