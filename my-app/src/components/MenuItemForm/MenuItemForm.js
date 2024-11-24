@@ -19,7 +19,11 @@ const MenuItemForm = ({ onSubmit, initialData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    const updatedFormData = {
+      ...formData,
+      price: formData.price.toString().replaceAll(",", "."),
+    };
+    onSubmit(updatedFormData);
     setFormData({
       name: "",
       description: "",

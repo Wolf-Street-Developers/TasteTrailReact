@@ -1,0 +1,66 @@
+.feedback-item-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ff4500; /* Orange-red accent */
+  }
+  
+  .feedback-item-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-item-username {
+    color: #ff4500; /* Orange-red color for username */
+  }
+  
+  .feedback-item-date {
+    color: #888;
+  }
+  
+  .feedback-item-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .feedback-item-rating {
+    font-size: 14px;
+    color: #ff6f00; /* Orange for rating */
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .feedback-item-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .feedback-item-like-button {
+    padding: 5px 10px;
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .feedback-item-like-button.liked {
+    background-color: #ff6f00;
+  }
+  
+  .feedback-item-likes {
+    font-size: 14px;
+    color: #333;
+  }
+  

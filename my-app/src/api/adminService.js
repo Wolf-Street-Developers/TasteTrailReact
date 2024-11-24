@@ -106,7 +106,6 @@ export const setRole = (userId, role) => {
           autoClose: 3000,
           hideProgressBar: true,
       })
-      console.log({userId, role})
       throw new Error(error.response?.data?.message || "Can not set role");
     })
 }

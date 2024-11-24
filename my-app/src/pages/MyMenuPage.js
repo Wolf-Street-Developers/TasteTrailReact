@@ -7,25 +7,16 @@ import MenuItemForm from "../components/MenuItemForm/MenuItemForm";
 import Modal from "../components/Modal/Modal";
 import { createMenuItem, updateMenuItem } from "../api/ownerService";
 import MenuItem from "../components/MenuItem/MenuItem";
+import "./MyMenuPage.css"
 
 const MyMenuPage = () => {
   const {id} = useParams();
   const [menu, setMenu] = useState()
   const [menuItems, setMenuItems] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingMenuItem, setEditingMenuItem] = useState(null)
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  const editMenuItem = (id, updatedMenuItem) => {
-    const updatedMenueItems = menuItems.map((menuItem) =>
-      menuItem.id === id ? updatedMenuItem : menuItem
-    );
-    setMenuItems(updatedMenueItems);
-    closeModal();
-    updateMenuItem(updatedMenuItem);
-  }
 
   const addMenuItem = (menuItem) => {
     setMenuItems([...menuItems, menuItem])
@@ -39,16 +30,15 @@ const MyMenuPage = () => {
   },[])
   return (
     <div>
-      {menu && <Menu menu={menu}/>}
+      {menu && <Menu menu={menu} isOwner/>}
       {menuItems.map((item)=>
-        <MenuItem item={item}/>
+        <MenuItem item={item} isOwner/>
       )}
-      <Button onClick={openModal}>Add item</Button>
+      <Button className="my-menu-page-add-item-btn" onClick={openModal}>Add item</Button>
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <MenuItemForm
-            onSubmit={editingMenuItem ? (updatedMenuItem) => editMenuItem(editingMenuItem.id, updatedMenuItem) : addMenuItem}
-            initialData={editingMenuItem}
+            onSubmit={addMenuItem}
           />
         </Modal>
       )}

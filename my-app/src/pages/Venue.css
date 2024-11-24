@@ -1,43 +1,140 @@
+/* General container styling */
 .venue-container {
-    height: 200px;
-}
-
-.venue-name {
-    font-size: 64px;
-    background-color: orange;
-    margin-left: 5vw;
-    margin-top: 5vh;
-    padding-left: 2vw;
-    padding-bottom: 1vh;
-    width: 86vw;
-}
-
-.venue-info-wrapper {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header styling for venue name */
+  .venue-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff4500;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Venue information wrapper */
+  .venue-info-wrapper {
     display: flex;
-    flex-direction: row;
-    width: 80vw;
-    margin-left: 10vw;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 5vw;
-}
-
-.venue-info-text {
-    flex-grow: 5;
-    font-size: 20px;
-    margin-bottom: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.venue-info-text > p {
-    padding: 10px;
-}
-
-.venue-info-img {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 30vw;
-    margin: 10px;
-    border: 4px;
-    border-style: solid;
-    border-color: orange;
-}
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Left-side text information */
+  .venue-info-text {
+    flex: 1;
+  }
+  
+  /* Venue text fields */
+  .venue-info-text p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .venue-info-text strong {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Image wrapper and image styling */
+  .venue-info-img-wrapper {
+    max-width: 200px;
+  }
+  
+  .venue-info-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Map styling */
+  .venue-map {
+    margin: 20px 0;
+    height: 300px;
+  }
+  
+  /* Menu title */
+  .venue-menu-title {
+    font-size: 22px;
+    color: #ff6f00;
+    margin: 20px 0 10px;
+    text-align: center;
+  }
+  
+  /* Menu container styling */
+  .venue-menues {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Feedback title */
+  .venue-feedback-title {
+    font-size: 22px;
+    color: #ff4500;
+    margin: 20px 0 10px;
+    text-align: center;
+  }
+  
+  /* Feedback container styling */
+  .venue-feedbacks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Feedback form title */
+  .venue-add-feedback-title {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Individual feedback item styling */
+  .feedback-item-container {
+    border-left: 4px solid #ff4500;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff5f0;
+  }
+  
+  /* Add feedback form */
+  .feedback-form-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff5f0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button styling */
+  .feedback-item-like-button,
+  .venue-container button {
+    background-color: #ff4500;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .feedback-item-like-button:hover,
+  .venue-container button:hover {
+    background-color: #ff6f00;
+  }
+  

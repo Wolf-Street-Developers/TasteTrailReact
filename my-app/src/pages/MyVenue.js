@@ -4,7 +4,7 @@ import VenueForm from "../components/VenueForm/VenueForm";
 import VenueTab from "../components/VenueTab/VenueTab";
 import "./MyVenue.css";
 import { createVenue, getMyVenues, setImage, updateVenue } from "../api/ownerService";
-import OwnerMenuList from "../components/OwnerMenuList/OwnerMenuList";
+import MenuList from "../components/MenuList/MenuList";
 
 const MyVenue = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,9 +20,9 @@ const MyVenue = () => {
   };
 
   const addVenue = (venue) => {
+    createVenue(venue).then((res)=>venue.id = res.data);
     setVenues([...venues, venue]);
     closeModal();
-    createVenue(venue);
   };
 
   const editVenue = (index, updatedVenue) => {
@@ -48,7 +48,7 @@ const MyVenue = () => {
     getMyVenues().then((u) => {
       setVenues(u.data);
     });
-  }, []);
+  }, [selectedVenue]);
 
   const selectVenue = (index) => setSelectedVenue(index);
 
@@ -63,7 +63,9 @@ const MyVenue = () => {
             index={index}
             venue={venue}
             isActive={selectedVenue === index}
-            onClick={() => selectVenue(index)}
+            onClick={() => {
+              selectVenue(index);
+            }}
             onEdit={() => handleEditClick(index)}
           />
         ))}
@@ -107,7 +109,7 @@ const MyVenue = () => {
         </Modal>
       )}
       {selectedVenue !== null && (
-        <OwnerMenuList venue={venues[selectedVenue]}></OwnerMenuList>
+        <MenuList venue={venues[selectedVenue]}></MenuList>
       )}
 
       {/* DELETE VENUE BUTTON */}

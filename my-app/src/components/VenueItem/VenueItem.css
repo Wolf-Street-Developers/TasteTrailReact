@@ -1,53 +1,76 @@
-.venue-item-container {
-    display: flex;
-    gap: 100px;
-    margin: 20px;
+/* Container for the Venue Item card */
+.venue-item-card {
+    width: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    margin-bottom: 10vh;
-}
-
-.venue-item-logo {
-    width: 30%;
-    height: 30%;
-}
-
-.venue-item-info {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.venue-item-info > p {
-    margin: 0;
-}
-
-.venue-item-name {
-    font-size: 64px;
-    padding-bottom: 20px;
-    text-align: right;
-}
-
-.venue-item-description {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 10px;
+  }
+  
+  /* Hover effect for subtle lift */
+  .venue-item-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Image styling */
+  .venue-item-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Content styling */
+  .venue-item-content {
+    padding: 15px;
+    color: #333;
+  }
+  
+  /* Price styling */
+  .venue-item-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff4500; /* Matches the red price color in the example image */
+    margin-bottom: 8px;
+  }
+  
+  /* Name styling */
+  .venue-item-name {
     font-size: 16px;
-    width: 50vw;
-    padding: 12px;
-    min-height: 20vh;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 20px;
-    border-color: gray;
-}
-
-.venue-item-info-misc {
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0;
+  }
+  
+  /* Description styling */
+  .venue-item-description {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+  }
+  
+  /* Footer styling: address and rating */
+  .venue-item-footer {
     display: flex;
-    flex-direction: row;
-    margin-left: 20px;
-}
-
-.venue-item-info-misc-misc {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    margin-left: auto;
-    margin-right: 20px;
-}
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #555;
+  }
+  
+  .venue-item-address {
+    font-weight: 500;
+  }
+  
+  .venue-item-rating {
+    font-weight: 500;
+    color: #ff4500;
+  }
+  

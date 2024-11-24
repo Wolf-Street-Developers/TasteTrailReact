@@ -1,91 +1,56 @@
-/* HomePage.css */
-.container {
-    font-family: Arial, sans-serif;
-    background-color: #fff3e0;
-    color: #333;
-    text-align: center;
-  }
-  
-  .header {
-    padding: 2rem 0;
-    background-color: #ff6f00;
-    color: #fff;
-  }
-  
-  .title {
-    font-size: 3rem;
-    margin: 0;
-  }
-  
-  .tagline {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-  }
-  
-  .heroSection {
-    background-color: #ffe0b2;
-    padding: 4rem 1rem;
-  }
-  
-  .heroContent {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .heroTitle {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #ff6f00;
-  }
-  
-  .heroText {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .exploreButton {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    background-color: #ff8a00;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .exploreButton:hover {
-    background-color: #ff6f00;
-  }
-  
-  .featuresSection {
-    display: flex;
-    justify-content: space-around;
-    padding: 4rem 1rem;
-    background-color: #fff3e0;
-  }
-  
-  .feature {
-    max-width: 250px;
-  }
-  
-  .featureTitle {
-    font-size: 1.5rem;
-    color: #ff6f00;
-  }
-  
-  .featureText {
-    font-size: 1rem;
-  }
-  
-  .footer {
-    padding: 2rem 0;
-    background-color: #ff6f00;
-    color: #fff;
-  }
-  
-  .footerText {
-    font-size: 0.9rem;
-    margin: 0;
-  }
-  
+.home-container {
+  background-image: url("../../public/images/home-bg.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2b2b2b;
+  text-align: center;
+}
+
+.home-content {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.home-title {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.home-description {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.home-btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-btn {
+  background-color: transparent;
+  color: orangered;
+  border: 2px solid orangered;
+}
+
+.home-btn:hover {
+  background-color: orangered;
+  color: white;
+}
+

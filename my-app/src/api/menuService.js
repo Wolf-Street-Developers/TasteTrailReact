@@ -131,3 +131,53 @@ export const getMenueItemsById = (id, type=0, pageNumber=1, pageSize=10, searcht
     throw new Error(error.response?.data?.message || "Can not get menu items");
   })
 }
+
+export const getFeedbacksByVenue = (id, type=0, pageNumber=1, pageSize=10, searchterm="") => {
+  return axios.post(
+      `${API_URL}/api/Feedback/GetFilteredByVenue?venueId=${id}`, 
+      {type, pageNumber, pageSize, searchterm}, 
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+  )
+  .then(response => {
+    return response
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not get feedbacks"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    })
+    console.log(error)
+    throw new Error(error.response?.data?.message || "Can not get feedbacks");
+  })
+}
+
+export const postFeedback = ({text, rating, venueId}) => {
+  console.log({text, rating, venueId})
+  return axios.post(
+      `${API_URL}/api/Feedback/Create`, 
+      {text, rating, venueId},
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+  )
+  .then(response => {
+    return response
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not post feedback"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    })
+    console.log(error)
+    throw new Error(error.response?.data?.message || "Can not post feedback");
+  })
+}
+

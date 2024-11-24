@@ -1,24 +1,43 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getMenuesById, getVenueById } from "../api/menuService";
+import { getFeedbacksByVenue, getMenuesById, getVenueById } from "../api/menuService";
 import "./Venue.css"
 import Map from "../components/Map/Map";
+import Menu from "../components/Menu/Menu";
+import { getMyVenues } from "../api/ownerService";
+import FeedbackForm from "../components/FeedbackForm/FeedbackForm";
+import FeedbackItem from "../components/FeedbackItem/FeedbackItem";
 
 const Venue = () => {
   const {id} = useParams();
 
+  const [isOwner, setIsOwner] = useState(false)
   const [venue, setVenue] = useState({})
   const [menues, setMenues] = useState([])
   const [position, setPosition] = useState([51.505, -0.09])
+  const [feedbacks, setFeedbacks] = useState([])
 
   
   useEffect(()=>{
+    getMyVenues().then((u)=>{
+      u.data.forEach((val)=>{
+        if(Number(val.id) === Number(id)
+        ){
+          setIsOwner(true);
+        }
+      })
+    })
     getVenueById(id).then((res)=>{
       setVenue(res.data);
-      setPosition([res.data.longtitude, res.data.latitude]);
+      setPosition([res.data.latitude, res.data.longtitude]);
+    })
+    getMenuesById(id).then((res)=>{
+      setMenues(res.data.entities)
+    })
+    getFeedbacksByVenue(id).then((res)=>{
+      setFeedbacks(res.data.entities)
     })
   },[id])
-
 
   return (
     <div className="venue-container">
@@ -39,10 +58,21 @@ const Venue = () => {
         </div>
       </div>
       <Map position={position} venueName={venue.name}/>
-
+      <h1 className="venue-menu-title">Menu</h1>
       <div className="venue-menues">
-        {menues.map((item)=>item.id)}
+        {menues.map((item)=><Menu menu={item} isOwner={isOwner}/>)}
       </div>
+      <h1 className="venue-feedback-title">Feedbacks</h1>
+      
+      <div className="venue-feedbacks">
+        {feedbacks.map((item)=><FeedbackItem feedback={item}/>)}
+      </div>
+      <h2>Add feedback:</h2>
+      <FeedbackForm venueId = {venue.id} updateFeedbacks={()=>{
+    getFeedbacksByVenue(id).then((res)=>{
+      setFeedbacks(res.data.entities)
+    })}}/>
+
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .menu-display {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     background-color: #ffffff;
     border: 2px solid orangered;
     border-radius: 8px;
@@ -40,5 +40,9 @@
   .menu-description {
     font-size: 1em;
     color: #333333;
+  }
+  
+  .menu-edit-button{
+    margin-left: auto;
   }
   

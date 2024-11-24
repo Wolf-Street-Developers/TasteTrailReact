@@ -22,7 +22,11 @@ axios.interceptors.response.use(
     const originalRequest = error.config;
     // Check if the error is due to an expired token
     if (error.response?.status === 401) {
-      if(originalRequest._retry) {  
+      if(originalRequest._retry || (localStorage.getItem('accessToken') === null)) {
+        console.log(window.location)
+        if(window.location.pathname === '/login' || window.location.pathname === '/signup') {
+          return
+        }
         window.location.href = '/login';
       } else {
         originalRequest._retry = true; // Mark the request as retried
@@ -34,8 +38,8 @@ axios.interceptors.response.use(
           originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
           return axios(originalRequest); // Retry the original request
         } catch (err) {
-          // localStorage.removeItem('accessToken');
-          // localStorage.removeItem('refreshToken');
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
           console.error('Token refresh failed:', err);
         }
 

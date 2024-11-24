@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./VenueForm.css";
+import MapChoose from "../MapChoose/MapChoose";
 
 const VenueForm = ({ onSubmit, initialData }) => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,13 @@ const VenueForm = ({ onSubmit, initialData }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const handleMapChange = (res) => {
+    const { lat, lng } = res;
+    setFormData({ ...formData, latitude: lat, longtitude: lng });
+    console.log(formData)
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,27 +115,8 @@ const VenueForm = ({ onSubmit, initialData }) => {
         />
       </label>
 
-      <label>
-        Longtitude:
-        <input
-          type="number"
-          name="longtitude"
-          value={formData.longtitude}
-          onChange={handleChange}
-          required
-        />
-      </label>
+      <MapChoose handleChange={handleMapChange}/>
 
-      <label>
-        Latitude:
-        <input
-          type="number"
-          name="latitude"
-          value={formData.latitude}
-          onChange={handleChange}
-          required
-        />
-      </label>
       <button type="submit">{initialData ? "Save Changes" : "Submit"}</button>
     </form>
   );
