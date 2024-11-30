@@ -3,6 +3,7 @@ import Pagination from "../components/Pagination/Pagination";
 import { getUsers } from "../api/adminService";
 import { useEffect, useState } from "react";
 import UserItem from "../components/UserItem/UserItem";
+import "./AdminDashboard.css"
 
 const AdminDashboard = () => { 
     
@@ -18,9 +19,11 @@ const AdminDashboard = () => {
     useEffect(()=>{handleSearch()},[page])
     
     return (
-        <div>
+        <div className="admin-dashboard-container">
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} filter={filter} setFilter={setFilter} handleSearch={handleSearch} filters = {[6,7,8,9]}/>
-            {users.map((item)=><UserItem item={item} key={item.user.id}/>)}
+            <div className="admin-dashboard-users">
+                {users.map((item)=><UserItem item={item} key={item.user.id}/>)}
+            </div>
             <Pagination type="Users" setPage={setPage} page={page}/>
         </div>
     );

@@ -2,6 +2,8 @@
     display: flex;
     margin-left: 20px;
     margin-bottom: 10px;
+    border-radius: 20px;
+    padding:5px 20px;
 }
 
 .user-item-buttons {
@@ -19,10 +21,48 @@
 }
 
 .user-item-role-select {
-    height: 20px;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 20px;
-    margin-right: 20px;
-    min-width: 80px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin: 0px 10px;
 }
+
+.user-item-role-select:focus {
+    border-color: #e53935;
+}
+
+.user-item-active-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: orangered;
+    background-color: transparent;
+    border: 2px solid orangered;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .user-item-active-button:hover {
+    background-color: orangered;
+    color: white;
+  }
+  
+  .user-item-active-button:active {
+    background-color: rgb(182, 48, 0); /* Even darker red when clicked */
+  }
+
+
+  .user-item-inactive-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+    background-color: transparent;
+    border: 2px solid gray;
+    border-radius: 5px;
+    cursor: auto;
+  }

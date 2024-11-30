@@ -63,7 +63,7 @@ const MenuItemForm = ({ onSubmit, initialData }) => {
           value={formData.price}
           onChange={handleChange}
           required
-          min="0"
+          min="0.01"
           step="0.01"
         />
       </label>

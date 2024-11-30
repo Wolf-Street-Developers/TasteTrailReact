@@ -12,10 +12,10 @@ const Pagination = (props) => {
         } else if(props.type === "Users") {
             getUsersCount().then((res)=>{setPages(Math.ceil(res.data.usersCount/props.count))})
         } else if(props.type === "Menues") {
-            getMenuesById(props.id).then((res)=>{setPages(Math.ceil(res.data.entities.length/props.count))})
+            getMenuesById(props.id).then((res)=>{setPages(Math.ceil(res.data.amountOfEntities/props.count))})
             setIsNotFixed(true)
         } else if(props.type === "MenuItems") {
-            getMenueItemsById(props.id).then((res)=>{setPages(Math.ceil(res.data.entities.length/props.count))})
+            getMenueItemsById(props.id).then((res)=>{setPages(Math.ceil(res.data.amountOfEntities/props.count));})
         } else if(props.type === "Feedbacks") {
             getFeedbacksByVenue(props.id).then((res)=>{console.log(res.data)})
             // getFeedbacksByVenue(props.id).then((res)=>{console.log(Math.ceil(res.data.entities.length/props.count))})

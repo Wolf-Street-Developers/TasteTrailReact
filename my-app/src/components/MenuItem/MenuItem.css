@@ -10,14 +10,20 @@
     margin: 16px;
     transition: transform 0.2s;
   }
+
+  
+  .menu-item label {
+    white-space: nowrap;
+    text-align: center;
+   }
   
   .menu-item:hover {
     transform: scale(1.02);
   }
   
   .menu-item-image {
-    width: 80px;
-    height: 80px;
+    width: 16vw;
+    height: 16vw;
     border-radius: 8px;
     margin-right: 16px;
     object-fit: cover;
@@ -26,7 +32,8 @@
   
   .menu-item-details {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     gap: 8px;
     width: 100%;
   }
@@ -87,4 +94,3 @@
   .menu-item-edit-image-btn:hover {
     background-color: rgb(194, 127, 2);
   }
-  

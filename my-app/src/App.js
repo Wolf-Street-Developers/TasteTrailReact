@@ -30,7 +30,7 @@ function App() {
           <Route path="/venue/:id" element={<Venue />}/>
           <Route path="/venue/:venueId/:menuId" element={<MenuPage />}/>
           <Route path="/myVenue" element={<MyVenue />}/>
-          <Route path="/myVenue/:menuId" element={<MenuPage />}/>
+          <Route path="/myVenue/:venueId/:menuId" element={<MenuPage />}/>
           <Route path="/admin" element={<AdminDashboard />}/>
         </Routes>
       </BrowserRouter>
