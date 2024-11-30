@@ -39,7 +39,7 @@ const MenuItem = ({ item, isOwner=false }) => {
   return (
     <>
       <div className="menu-item">
-        <img src={curMenuItem.imageUrlPath ? curMenuItem.imageUrlPath : "https://tastetrailblobstorage.blob.core.windows.net/menuitem-images/default-image.png"}  alt={curMenuItem.name} className="menu-item-image" />
+        <img src={curMenuItem.imageUrlPath ? curMenuItem.imageUrlPath + `?v=${Math.random()}` : "https://tastetrailblobstorage.blob.core.windows.net/menuitem-images/default-image.png"}  alt={curMenuItem.name} className="menu-item-image" />
         <div className="menu-item-details">
           <div className="menu-item-info">
             <h2 className="menu-item-name">{curMenuItem.name}</h2>

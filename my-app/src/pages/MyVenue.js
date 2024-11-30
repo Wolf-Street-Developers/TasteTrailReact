@@ -87,7 +87,7 @@ const MyVenue = () => {
           </div>
           <div className="my-venue-logo-container">
             <div className="my-venue-logo">
-              <img alt="Logo" src={chosenFile ? URL.createObjectURL(chosenFile) : venues[selectedVenue].logoUrlPath} width={456} height={512}/>
+              <img alt="Logo" src={chosenFile ? URL.createObjectURL(chosenFile) : venues[selectedVenue].logoUrlPath + `?v=${Math.random()}`} width={456} height={512}/>
             </div>
             {/* <input className="edit-image-btn" onClick={onFileChange} type="file"/> */}
             <label onChange={handleFile} htmlFor="formId">

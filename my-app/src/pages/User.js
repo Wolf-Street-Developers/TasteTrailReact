@@ -6,15 +6,16 @@ import "./User.css";
 const User = () => {
   const [user, setUser] = useState();
   const [chosenFile, setChosenFile] = useState()
-  useEffect(() => {
+  const updateUser = ()=>{
     getUserRoles().then((u) => {
-      setUser(u.data.user);
-      console.log(u.data.user);
-    });
+    setUser(u.data.user);
+  });}
+  useEffect(() => {
+    updateUser()
   }, []);
 
   const handleFile = (event) => {
-    setAvatar(event.target.files[0]);
+    setAvatar(event.target.files[0]).then((res)=>{console.log(res)});
     setChosenFile(event.target.files[0]);
   };
 
@@ -29,7 +30,7 @@ const User = () => {
 
       <div className="user-profile">
         <div className="profile-card">
-          <Avatar avatar={(chosenFile && URL.createObjectURL(chosenFile)) || user?.avatarPath} size="large" />
+          <Avatar avatar={(chosenFile && URL.createObjectURL(chosenFile)) || user?.avatarPath + `?v=${Math.random()}`} size="large" />
           <div className="profile-info">
             <h3>{user?.userName || "User Name"}</h3>
             <p>{user?.email || "No email provided"}</p>
