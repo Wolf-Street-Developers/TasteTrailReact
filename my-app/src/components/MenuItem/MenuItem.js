@@ -32,6 +32,7 @@ const MenuItem = ({ item, isOwner=false }) => {
 
   
   const handleFile = (event) => {
+    console.log(123312)
     setCurMenuItem({...curMenuItem, imageUrlPath:  URL.createObjectURL(event.target.files[0])});
     setMenuItemImage(event.target.files[0], item.id)
   };
