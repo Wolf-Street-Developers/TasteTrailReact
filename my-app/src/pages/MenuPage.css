@@ -1,0 +1,10 @@
+.menu-page-menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.menu-page-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

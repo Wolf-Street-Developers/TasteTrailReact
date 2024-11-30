@@ -184,9 +184,35 @@ export const postFeedback = ({text, rating, venueId}) => {
 
 
 export const postLike = ({menuItemId}) => {
+  console.log({menuItemId})
   return axios.post(
       `${API_URL}/api/MenuItemLike`, 
       {menuItemId},
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+  )
+  .then(response => {
+    return response
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not like menu item"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    })
+    console.log(error)
+    throw new Error(error.response?.data?.message || "Can not like menu item");
+  })
+}
+
+
+export const deleteLike = ({menuItemId}) => {
+  console.log({menuItemId})
+  return axios.delete(
+      `${API_URL}/api/MenuItemLike?menuItemId=${menuItemId}`,
       {
         headers: {
           'Content-Type': 'application/json',

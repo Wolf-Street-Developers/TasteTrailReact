@@ -48,9 +48,9 @@ const UserItem = ({item}) => {
                 </select>
             </div>
             <div className="user-item-buttons">
-                <Button style={chosenRole===lastRole ? {"backgroundColor": "gray", "cursor": "auto"} : {}} onClick={handleSetRole}>Set role</Button>
-                <Button style={isBanned ? {} : {"backgroundColor": "orangered"}} onClick={handleBan}>{isBanned ? "Unban" : "Ban"}</Button>
-                <Button style={isMuted ? {} : {"backgroundColor": "orangered"}} onClick={handleMute}>{isMuted ? "Unmute" : "Mute"}</Button>
+                <Button className={chosenRole===lastRole ? "user-item-inactive-button" : 'user-item-active-button'} onClick={handleSetRole}>Set role</Button>
+                <Button className={isBanned ? "user-item-inactive-button" : "user-item-active-button"} onClick={handleBan}>{isBanned ? "Unban" : "Ban"}</Button>
+                <Button className={isMuted ? "user-item-inactive-button" : "user-item-active-button"} onClick={handleMute}>{isMuted ? "Unmute" : "Mute"}</Button>
             </div>
         </div>
     )
