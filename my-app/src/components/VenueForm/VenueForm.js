@@ -21,6 +21,12 @@ const VenueForm = ({ onSubmit, initialData }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "contactNumber") {
+      const numericPattern = /^\+?[0-9\s-]*$/;
+      if (!numericPattern.test(value)) {
+        return;
+      }
+    }
     setFormData({ ...formData, [name]: value });
   };
 
@@ -99,6 +105,7 @@ const VenueForm = ({ onSubmit, initialData }) => {
           type="tel"
           name="contactNumber"
           value={formData.contactNumber}
+          maxLength={15}
           onChange={handleChange}
           required
         />
@@ -111,6 +118,8 @@ const VenueForm = ({ onSubmit, initialData }) => {
           name="averagePrice"
           value={formData.averagePrice}
           onChange={handleChange}
+          min={0.01}
+          step={0.01}
           required
         />
       </label>

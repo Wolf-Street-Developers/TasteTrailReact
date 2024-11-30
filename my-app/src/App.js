@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './api/axiosConfig';
 import MenuPage from "./pages/MenuPage";
 import { RoleProvider } from "./RoleContext";
+import CreateVenue from "./pages/CreateVenue";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/myVenue" element={<MyVenue />}/>
           <Route path="/myVenue/:venueId/:menuId" element={<MenuPage />}/>
           <Route path="/admin" element={<AdminDashboard />}/>
+          <Route path="/createVenue" element={<CreateVenue />}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer />
