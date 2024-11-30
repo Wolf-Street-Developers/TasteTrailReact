@@ -6,6 +6,11 @@ import Map from "../components/Map/Map";
 import { getMyVenues } from "../api/ownerService";
 import TabComponent from "../components/TabComponent/TabComponent";
 import { useRole } from "../RoleContext";
+import LocationIcon from '../assets/icons/location.png';
+import EmailIcon from '../assets/icons/email.png';
+import PhoneIcon from '../assets/icons/telephone.png';
+import { StarRating } from '../components/StarRating/StarRating'
+
 
 const Venue = () => {
   const {id} = useParams();
@@ -37,24 +42,35 @@ const Venue = () => {
 
   return (
     <div className="main-container">
-      <h1 className="venue-name">{venue.name}</h1>
+      <div className="venue-head-info">
+        <div className="venue-name">{venue.name}</div>
+        <div className="venue-secondary-head-info">
+          <div className="venue-info-address"> {venue.address}</div>
+          <div className="venue-secondary-head-phone">
+          <img style={{width: 24,height: 24}} src={PhoneIcon} alt="phone"/>
+          <div className="venue-info-address"> {venue.contactNumber}</div>
+          </div>
+          <div className="venue-rating-container"><StarRating rating={venue.rating}/></div>
+        </div>
+      </div>
       <div className="venue-container">
-        <div className="venue-rating-container"><strong>Rating:</strong> {venue.rating}</div>
-
         <div className="venue-img-wrapper">
             <img className="venue-img" alt="logo" src={venue.logoUrlPath}/>
         </div>
 
         <div className="venue-info-wrapper">
           <div className="venue-info-text">
+            <div className="first-info-wrapper">
+              <div className="venue-about-container">
+                <div className="venue-main-header">About</div>
+                <div className="venue-text-container venue-flex-container">
+                  <div className="venue-description">{venue.description}</div>
+                </div>
+              </div>
 
-            <div className="venue-main-header">About</div>
-            <div className="venue-text-container">
-              <div className="venue-description">{venue.description}</div>
               <div className="venue-average-price">
-                <span className="average-price-header">Avg. price: </span> 
-                {venue.averagePrice}
-                <span style={{ color: "green"}} className="dollar-sign">$</span>
+                <div className="venue-average-header">On Average</div>
+                <div className="venue-average-dollar">{venue.averagePrice}$</div>
               </div>
             </div>
               
@@ -62,14 +78,23 @@ const Venue = () => {
             <div className="venue-text-container">
               <div className="venue-location-container">
                 <Map position={position} venueName={venue.name}/>
-                <div className="venue-info-address"> {venue.address}</div>
+                <div className="venue-location-info">
+                  <img style={{width: 24,height: 24}} src={LocationIcon} alt="location"/>
+                  <div className="venue-info-address">{venue.address}</div>
+                </div>
               </div>
             </div>
 
             <div className="venue-main-header">Contacts</div>
             <div className="venue-text-container">
-              <div className="venue-contact-number">{venue.contactNumber}</div>
-              <div className="venue-contact-email">{venue.email}</div>
+              <div className="venue-contact-number">
+                <img style={{width: 24,height: 24}} src={PhoneIcon}  alt="phone"/>
+                {venue.contactNumber}
+              </div>
+              <div className="venue-contact-email">
+                <img style={{width: 24,height: 24}} src={EmailIcon} alt="email"/>
+                {venue.email}
+              </div>
             </div>
           </div>
 

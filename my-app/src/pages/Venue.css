@@ -1,11 +1,11 @@
 /* General container styling */
 .main-container {
-width: 1000px;
-margin: 50px auto;
+  width: 1000px;
+  margin: 50px auto;
 }
 
 .venue-container {
-  padding: 20px;
+  padding: 30px 40px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -13,14 +13,26 @@ margin: 50px auto;
   font-family: Arial, sans-serif;
 }
 
+.venue-head-info {
+  margin-left: 40px;
+  margin-bottom: 15px;
+  color:#4D4D4D;
+}
+
 /* Header styling for venue name */
 .venue-name {
-  font-size: 28px;
+  font-size: 35px;
   font-weight: bold;
   color: #ff4500;
   text-align: left;
-  margin-bottom: 10px;
-  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+.venue-secondary-head-info {
+  display: flex;
+  gap: 25px;
+  font-size: 18px;
+  align-items: center;
 }
 
 /* Venue information wrapper */
@@ -47,18 +59,29 @@ margin: 50px auto;
   font-size: 17px;
   color: #4D4D4D;
 
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .venue-rating-container {
-  font-size: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
   color: #4D4D4D;
-  margin-bottom: 30px;
+}
+
+.venue-rating-text {
+  margin-right: 25px;
+}
+
+.venue-location-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .venue-location-container {
   display: flex;
-  gap: 30px;
+  gap: 70px;
   align-items: center;
   /* width: 500px;
   margin: 0px auto; */
@@ -66,11 +89,24 @@ margin: 50px auto;
 
 .venue-description {
   margin-bottom: 10px;
+
 }
 
 .venue-average-price {
   font-size: 18px;
   font-weight: bold;
+  width: 40%;
+
+}
+
+.venue-average-header {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.venue-average-dollar {
+  font-size: 28px;
+  color: green;
 }
 
 /* Venue text fields */
@@ -177,4 +213,32 @@ margin: 50px auto;
 .feedback-item-like-button:hover
 {
   background-color: #ff6f00;
+}
+
+.venue-contact-number {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.venue-contact-email {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.venue-secondary-head-phone {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.venue-flex-container {
+  display: flex;
+  gap: 30px;
+}
+
+.first-info-wrapper {
+  display: flex;
+  gap: 20px;
 }

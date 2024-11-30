@@ -7,7 +7,6 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    text-align: center;
     font-family: Arial, sans-serif;
     margin: 10px;
   }
@@ -57,16 +56,19 @@
   
   /* Footer styling: address and rating */
   .venue-item-footer {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-top: 15px;
     font-size: 13px;
     color: #555;
   }
+
+  .venue-item-star-wrapper {
+    font-size: 30px;
+  }
   
   .venue-item-address {
     font-weight: 500;
+    font-size: 13px;
   }
   
   .venue-item-rating {
