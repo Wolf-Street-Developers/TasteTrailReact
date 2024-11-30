@@ -5,9 +5,11 @@ import "./Venue.css"
 import Map from "../components/Map/Map";
 import { getMyVenues } from "../api/ownerService";
 import TabComponent from "../components/TabComponent/TabComponent";
+import { useRole } from "../RoleContext";
 
 const Venue = () => {
   const {id} = useParams();
+  const {role} = useRole()
 
   const [isOwner, setIsOwner] = useState(false)
   const [venue, setVenue] = useState({})
@@ -15,19 +17,23 @@ const Venue = () => {
 
   
   useEffect(()=>{
-    getMyVenues().then((u)=>{
-      u.data.forEach((val)=>{
-        if(Number(val.id) === Number(id)
-        ){
-          setIsOwner(true);
-        }
+    if(role === "Owner") {
+      getMyVenues().then((u)=>{
+        u.data.forEach((val)=>{
+          if(Number(val.id) === Number(id)
+          ) {
+            setIsOwner(true);
+          }
+        })
       })
-    })
+    } else {
+      setIsOwner(false)
+    }
     getVenueById(id).then((res)=>{
       setVenue(res.data);
       setPosition([res.data.latitude, res.data.longtitude]);
     })
-  },[id])
+  },[id, role])
 
   return (
     <div className="main-container">
