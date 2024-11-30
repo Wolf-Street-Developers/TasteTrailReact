@@ -50,6 +50,7 @@ const MenuItemForm = ({ onSubmit, initialData }) => {
           name="description"
           value={formData.description}
           onChange={handleChange}
+          maxLength={500}
           required
         />
       </label>

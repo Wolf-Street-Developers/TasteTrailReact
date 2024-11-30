@@ -1,7 +1,133 @@
-.user-container {
+/* General Page Styles */
+.user-page {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header Styles */
+  .user-header {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: left;
-    gap: 10%;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgb(255, 166, 0);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .user-welcome h2 {
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+  }
+  
+  .user-welcome span {
+    font-size: 0.9rem;
+    color: rgb(182, 48, 0);
+  }
+  
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  /* Profile Section */
+  .user-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+  }
+  
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 166, 0);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+  }
+  
+  .profile-card p {
+    font-size: 1rem;
+    color: rgb(182, 48, 0);
+  }
+  
+  .edit-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: rgb(255, 68, 0);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    background-color: rgb(221, 59, 0);
+  }
+  
+  /* Details Section */
+  .profile-details {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 166, 0);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .detail-row strong {
+    color: rgb(0, 0, 0);
+  }
+  
+  .detail-row span {
+    color: rgb(182, 48, 0);
+  }
+  
+
+  .user-avatar {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-avatar-btn {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  background-color: rgb(255, 68, 0);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-avatar-btn:hover {
+  background-color: rgb(221, 59, 0);
 }

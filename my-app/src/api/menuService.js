@@ -156,6 +156,7 @@ export const getFeedbacksByVenue = (id, type=0, pageNumber=1, pageSize=10, searc
   })
 }
 
+
 export const postFeedback = ({text, rating, venueId}) => {
   console.log({text, rating, venueId})
   return axios.post(
@@ -178,6 +179,31 @@ export const postFeedback = ({text, rating, venueId}) => {
     })
     console.log(error)
     throw new Error(error.response?.data?.message || "Can not post feedback");
+  })
+}
+
+
+export const postLike = ({menuItemId}) => {
+  return axios.post(
+      `${API_URL}/api/MenuItemLike`, 
+      {menuItemId},
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+  )
+  .then(response => {
+    return response
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not like menu item"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    })
+    console.log(error)
+    throw new Error(error.response?.data?.message || "Can not like menu item");
   })
 }
 

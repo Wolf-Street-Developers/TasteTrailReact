@@ -7,6 +7,7 @@ import Menu from "../components/Menu/Menu";
 import { getMyVenues } from "../api/ownerService";
 import FeedbackForm from "../components/FeedbackForm/FeedbackForm";
 import FeedbackItem from "../components/FeedbackItem/FeedbackItem";
+import Pagination from "../components/Pagination/Pagination";
 
 const Venue = () => {
   const {id} = useParams();
@@ -16,7 +17,11 @@ const Venue = () => {
   const [menues, setMenues] = useState([])
   const [position, setPosition] = useState([51.505, -0.09])
   const [feedbacks, setFeedbacks] = useState([])
+  const [menuPage, setMenuPage] = useState(1)
+  const [feedbackPage, setFeedbackPage] = useState(1)
 
+  const menuPageSize = 1;
+  const feedbackPageSize = 1;
   
   useEffect(()=>{
     getMyVenues().then((u)=>{
@@ -31,13 +36,13 @@ const Venue = () => {
       setVenue(res.data);
       setPosition([res.data.latitude, res.data.longtitude]);
     })
-    getMenuesById(id).then((res)=>{
+    getMenuesById(id, menuPage, menuPageSize).then((res)=>{
       setMenues(res.data.entities)
     })
     getFeedbacksByVenue(id).then((res)=>{
       setFeedbacks(res.data.entities)
     })
-  },[id])
+  },[id, menuPage])
 
   return (
     <div className="venue-container">
@@ -60,12 +65,14 @@ const Venue = () => {
       <Map position={position} venueName={venue.name}/>
       <h1 className="venue-menu-title">Menu</h1>
       <div className="venue-menues">
-        {menues.map((item)=><Menu menu={item} isOwner={isOwner}/>)}
+        {menues.map((item)=><Menu menu={item} isOwner={isOwner} key={item.id}/>)}
+        <Pagination type="Menues" setPage={setMenuPage} page={menuPage} id={id} count={menuPageSize}/>
       </div>
       <h1 className="venue-feedback-title">Feedbacks</h1>
       
       <div className="venue-feedbacks">
         {feedbacks.map((item)=><FeedbackItem feedback={item}/>)}
+        <Pagination type="Feedbacks" setPage={setFeedbackPage} page={feedbackPage} id={id} count={feedbackPageSize}/>
       </div>
       <h2>Add feedback:</h2>
       <FeedbackForm venueId = {venue.id} updateFeedbacks={()=>{

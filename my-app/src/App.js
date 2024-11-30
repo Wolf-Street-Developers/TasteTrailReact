@@ -12,7 +12,6 @@ import Header from "./components/Header/Header";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './api/axiosConfig';
-import MyMenuPage from "./pages/MyMenuPage";
 import MenuPage from "./pages/MenuPage";
 
 function App() {
@@ -30,7 +29,7 @@ function App() {
           <Route path="/venue/:id" element={<Venue />}/>
           <Route path="/venue/:venueId/:menuId" element={<MenuPage />}/>
           <Route path="/myVenue" element={<MyVenue />}/>
-          <Route path="/myVenue/:id" element={<MyMenuPage />}/>
+          <Route path="/myVenue/:menuId" element={<MenuPage />}/>
           <Route path="/admin" element={<AdminDashboard />}/>
         </Routes>
       </BrowserRouter>
