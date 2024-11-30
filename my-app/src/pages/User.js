@@ -32,43 +32,26 @@ const User = () => {
           <Avatar avatar={(chosenFile && URL.createObjectURL(chosenFile)) || user?.avatarPath} size="large" />
           <div className="profile-info">
             <h3>{user?.userName || "User Name"}</h3>
-            <p>{user?.email || "No email provided"}</p>
           </div>
           <label onChange={handleFile} htmlFor="formId">
           <input name="" type="file" id="formId" hidden accept="image/*" /> 
           <div className="edit-image-btn"> 
-          Edit Image 
+            Edit Image 
           </div> 
           </label>
         </div>
 
         <div className="profile-details">
           <div className="detail-row">
-            <strong>Email:</strong>
+            <strong>Email</strong>
             <span>{user?.email || "Not provided"}</span>
           </div>
           <div className="detail-row">
-            <strong>Email Confirmed:</strong>
-            <span>{user?.emailConfirmed ? "Yes" : "No"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Phone Number:</strong>
-            <span>{user?.phoneNumber || "Not provided"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Phone Confirmed:</strong>
-            <span>{user?.phoneNumberConfirmed ? "Yes" : "No"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Two-Factor Enabled:</strong>
-            <span>{user?.twoFactorEnabled ? "Yes" : "No"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Account Status:</strong>
+            <strong>Account Status</strong>
             <span>{user?.isBanned ? "Banned" : "Active"}</span>
           </div>
           <div className="detail-row">
-            <strong>Mute Status:</strong>
+            <strong>Mute Status</strong>
             <span>{user?.isMuted ? "Muted" : "Not Muted"}</span>
           </div>
         </div>
