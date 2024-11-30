@@ -1,21 +1,17 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getFeedbacksByVenue, getMenuesById, getVenueById } from "../api/menuService";
+import { getVenueById } from "../api/menuService";
 import "./Venue.css"
 import Map from "../components/Map/Map";
-import Menu from "../components/Menu/Menu";
 import { getMyVenues } from "../api/ownerService";
-import FeedbackForm from "../components/FeedbackForm/FeedbackForm";
-import FeedbackItem from "../components/FeedbackItem/FeedbackItem";
+import TabComponent from "../components/TabComponent/TabComponent";
 
 const Venue = () => {
   const {id} = useParams();
 
   const [isOwner, setIsOwner] = useState(false)
   const [venue, setVenue] = useState({})
-  const [menues, setMenues] = useState([])
   const [position, setPosition] = useState([51.505, -0.09])
-  const [feedbacks, setFeedbacks] = useState([])
 
   
   useEffect(()=>{
@@ -31,48 +27,51 @@ const Venue = () => {
       setVenue(res.data);
       setPosition([res.data.latitude, res.data.longtitude]);
     })
-    getMenuesById(id).then((res)=>{
-      setMenues(res.data.entities)
-    })
-    getFeedbacksByVenue(id).then((res)=>{
-      setFeedbacks(res.data.entities)
-    })
   },[id])
 
   return (
-    <div className="venue-container">
+    <div className="main-container">
       <h1 className="venue-name">{venue.name}</h1>
-      <div className="venue-info-wrapper">
-        <div className="venue-info-text">
-          <p className="venue-info-address"><strong>Address:</strong> {venue.address}</p>
-          <p className="venue-info-average-price"><strong>Average Price:</strong> ${venue.averagePrice}</p>
-          <p className="venue-info-contact-number"><strong>Contact Number:</strong> {venue.contactNumber}</p>
-          <p className="venue-info-creation-date"><strong>Creation Date:</strong> {new Date(venue.creationDate).toLocaleDateString()}</p>
-          <p className="venue-info-description"><strong>Description:</strong> {venue.description}</p>
-          <p className="venue-info-email"><strong>Email:</strong> {venue.email}</p>
-          <p className="venue-info-rating"><strong>Rating:</strong> {venue.rating}</p>
+      <div className="venue-container">
+        <div className="venue-rating-container"><strong>Rating:</strong> {venue.rating}</div>
+
+        <div className="venue-img-wrapper">
+            <img className="venue-img" alt="logo" src={venue.logoUrlPath}/>
         </div>
 
-        <div className="venue-info-img-wrapper">
-          <img className="venue-info-img" alt="logo" src={venue.logoUrlPath}/>
-        </div>
-      </div>
-      <Map position={position} venueName={venue.name}/>
-      <h1 className="venue-menu-title">Menu</h1>
-      <div className="venue-menues">
-        {menues.map((item)=><Menu menu={item} isOwner={isOwner}/>)}
-      </div>
-      <h1 className="venue-feedback-title">Feedbacks</h1>
-      
-      <div className="venue-feedbacks">
-        {feedbacks.map((item)=><FeedbackItem feedback={item}/>)}
-      </div>
-      <h2>Add feedback:</h2>
-      <FeedbackForm venueId = {venue.id} updateFeedbacks={()=>{
-    getFeedbacksByVenue(id).then((res)=>{
-      setFeedbacks(res.data.entities)
-    })}}/>
+        <div className="venue-info-wrapper">
+          <div className="venue-info-text">
 
+            <div className="venue-main-header">About</div>
+            <div className="venue-text-container">
+              <div className="venue-description">{venue.description}</div>
+              <div className="venue-average-price">
+                <span className="average-price-header">Avg. price: </span> 
+                {venue.averagePrice}
+                <span style={{ color: "green"}} className="dollar-sign">$</span>
+              </div>
+            </div>
+              
+            <div className="venue-main-header">Location</div>
+            <div className="venue-text-container">
+              <div className="venue-location-container">
+                <Map position={position} venueName={venue.name}/>
+                <div className="venue-info-address"> {venue.address}</div>
+              </div>
+            </div>
+
+            <div className="venue-main-header">Contacts</div>
+            <div className="venue-text-container">
+              <div className="venue-contact-number">{venue.contactNumber}</div>
+              <div className="venue-contact-email">{venue.email}</div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <TabComponent isOwner={isOwner} venueId={id}/>
+      </div>
     </div>
   );
 };

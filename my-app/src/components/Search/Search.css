@@ -46,16 +46,17 @@
     padding: 10px 20px;
     font-size: 14px;
     font-weight: bold;
-    color: white;
-    background-color: rgb(255, 68, 0);
-    border: none;
+    color: orangered;
+    background-color: transparent;
+    border: 2px solid orangered;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
   }
   
   .search-button:hover {
-    background-color: rgb(221, 59, 0); /* Darker red on hover */
+    background-color: orangered;
+    color: white;
   }
   
   .search-button:active {

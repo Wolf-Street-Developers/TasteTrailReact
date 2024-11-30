@@ -71,6 +71,8 @@
   
   .venue-item-rating {
     font-weight: 500;
-    color: #ff4500;
+    color: orangered;
+    font-weight: bold;
+    font-size: 17px;
   }
   

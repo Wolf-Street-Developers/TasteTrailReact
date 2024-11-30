@@ -10,7 +10,7 @@ const VenueItem = ({ item }) => {
     <div className="venue-item-card" onClick={() => navigate(`/venue/${id}`)}>
       <img alt="Logo" className="venue-item-image" src={logoUrlPath} />
       <div className="venue-item-content">
-        <p className="venue-item-price">${averagePrice.toFixed(2)}</p>
+        {/* <p className="venue-item-price">${averagePrice.toFixed(2)}</p> */}
         <h3 className="venue-item-name">{name}</h3>
         <p className="venue-item-description">{description}</p>
         <div className="venue-item-footer">

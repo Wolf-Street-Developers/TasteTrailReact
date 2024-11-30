@@ -19,7 +19,8 @@ const Header = () => {
         <div className={styles.header_container}>
             <Link className={styles.header_item}  to="/">Home</Link>
             <Link className={styles.header_item} to="venues">Venues</Link>
-            {(role === "User" || role === "Admin" || role === "Owner")  && <Link className={styles.header_item} to="user">User</Link>}
+            {(role === "User" || role === "Admin" || role === "Owner")  
+              && <Link className={styles.header_item} to="user">User</Link>}
             {role === "Owner" && <Link className={styles.header_item} to="myVenue">My Venue</Link>}
         </div>
 

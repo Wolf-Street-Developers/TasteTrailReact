@@ -1,0 +1,21 @@
+.tabs {
+    display: flex;
+    gap: 20px;
+  }
+  
+.tabBtn {
+  cursor: pointer;
+  color: black;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.tab-btn:hover {
+  background-color: #ddd;
+}
+
+.tab-btn-active {
+  background-color: #2b2b2b;
+  color: white;
+}
+  
