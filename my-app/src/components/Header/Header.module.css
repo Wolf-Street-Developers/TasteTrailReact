@@ -1,0 +1,37 @@
+.main_container {
+    background-color:  #2B2B2B;
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 120px;
+
+    background-color:  #2B2B2B;
+}
+
+.header_buttons_container {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.header_item {
+    text-decoration: none;
+    color: #F1F1F1;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 18px 15px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+a {
+    display:inline-block;
+}
+
+a:hover {
+    background-color: #4A4A4A;
+    transition: background-color 0.3s ease
+}

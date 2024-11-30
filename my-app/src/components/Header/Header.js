@@ -1,25 +1,38 @@
+import styles from './Header.module.css';
+
 import { Link } from 'react-router-dom';
-import './Header.css';
 import { useEffect, useState } from "react";
 import { getUserRoles } from "../../api/userService";
 
 const Header = () => {
-    const [role, setRole] = useState()
-    useEffect(()=>{getUserRoles().then((u)=>{setRole(u.data.roles[0]);}).catch(()=>setRole("No role"))},[])
-    return (
-      <div className='header_container'>
-        <nav className='header_buttons_container'>
-            <Link to="/">Home</Link>
-            <Link to="logIn">Log in</Link>
-            <Link to="signUp">Sign up</Link>
-            <Link to="venues">Menu</Link>
-            <Link to="user">User</Link>
-            {role === "Owner" && <Link to="myVenue">My Venue</Link>}
-            {role === "Admin" && <Link to="admin">Admin panel</Link>}
-        </nav>
+  const [role, setRole] = useState()
+
+  useEffect(() => {
+    getUserRoles()
+    .then((u) => setRole(u.data.roles[0]))
+    .catch(()=>setRole("No role"))},[]
+  )
+
+  return (
+    <div className={styles.main_container}>
+      <div className={styles.header_container}>
+        <div className={styles.header_container}>
+            <Link className={styles.header_item}  to="/">Home</Link>
+            <Link className={styles.header_item} to="venues">Venues</Link>
+            {role !== "No role" && <Link className={styles.header_item} to="user">User</Link>}
+            {role === "Owner" && <Link className={styles.header_item} to="myVenue">My Venue</Link>}
+        </div>
+
+        <div className={styles.header_container}>
+          {role === "Admin" && <Link className={styles.header_item} to="admin">Admin panel</Link>}
+          {role === "No role" && <Link className={styles.header_item} to="logIn">Log in</Link>}
+          {role === "No role" && <Link className={styles.header_item} to="signUp">Sign up</Link>}
+          {role !== "No role" && <Link className={styles.header_item} to="logout">Logout</Link>}
+        </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
   
   
 export default Header

@@ -1,7 +1,8 @@
 import React from "react";
 import "./Home.css";
-import PopularSection from "../components/PopularSection/PopularSection";
 import { useNavigate } from "react-router-dom";
+import { AboutUs } from "../../components/AboutUs/AboutUs";
+import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
   const navigate = useNavigate()
@@ -18,7 +19,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-    <PopularSection/>
+    <AboutUs/>
+    <Footer />
   </>
   );
 };
