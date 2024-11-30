@@ -24,12 +24,9 @@ const FeedbackItem = ({ feedback }) => {
       </div>
       <div className="feedback-item-text">{feedback.text}</div>
       <div className="feedback-item-rating">Rating: {feedback.rating}/5</div>
-      <div className="feedback-item-footer">
-        <button className={`feedback-item-like-button ${isLiked ? 'liked' : ''}`} onClick={handleLike}>
-          {isLiked ? 'Unlike' : 'Like'}
-        </button>
-        <span className="feedback-item-likes">Likes: {likes}</span>
-      </div>
+      <button className={`like-button ${isLiked ? "liked" : ""}`} onClick={handleLike}>
+        {isLiked ? "❤️" : "🤍"} {likes}
+      </button>
     </div>
   );
 };

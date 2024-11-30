@@ -58,7 +58,6 @@ export const logout = () => {
     }
   )
   .then(response => {
-    localStorage.removeItem('userRole');
     localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
     return response
@@ -87,10 +86,6 @@ export const register = (name, email, password) => {
   )
   .then(response => {
     const { accessToken, refreshToken } = response.data;
-    getUserRoles().then(rolesResponse => {
-      const role = rolesResponse.data.roles[0];
-      localStorage.setItem('userRole', role);
-    })
     // Store tokens in localStorage
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);

@@ -43,7 +43,7 @@ const MenuList = (props) => {
         <div>
             <h1 className="menu-list-title">Menu</h1>
             {props.children}
-            {menues.map((val)=><Menu menu={val} key={val.id} isOwner/>)}
+            {menues.map((val)=><Menu menu={val} key={val.id} isOwner={true} venueId={venue.id}/>)}
             <button className="add-menu-btn" onClick={openModal}>Add menu</button>
             {isModalOpen && (
               <Modal onClose={closeModal}>

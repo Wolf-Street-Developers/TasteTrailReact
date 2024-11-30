@@ -45,7 +45,7 @@ const TabComponent = ( { isOwner, venueId }) => {
       <div className="tab-content">
         {activeTab === 'menu' && (
             <div className="venue-menues">
-            {menues.map((item)=><Menu menu={item} isOwner={isOwner}/>)}
+            {menues.map((item)=><Menu menu={item}/>)}
             </div>
         )}
         {activeTab === 'review' && (

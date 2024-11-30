@@ -4,7 +4,7 @@ import Modal from "../Modal/Modal";
 import MenuItemForm from "../MenuItemForm/MenuItemForm";
 import Button from "../Buttton/Button";
 import { setMenuItemImage, updateMenuItem } from "../../api/ownerService";
-import { postLike } from "../../api/menuService";
+import { deleteLike, postLike } from "../../api/menuService";
 
 const MenuItem = ({ item, isOwner=false }) => {
   const [isLiked, setIsLiked] = useState(item.isLiked);
@@ -14,10 +14,10 @@ const MenuItem = ({ item, isOwner=false }) => {
 
   const handleLike = () => {
     if(!isLiked) {
-      console.log(item)
-      // postLike(item.id)
+      postLike({menuItemId: item.id}).then(()=>{setIsLiked(true);})
+    } else {
+      deleteLike({menuItemId: item.id}).then(()=>{setIsLiked(false);})
     }
-    setIsLiked(!isLiked);
     setLikes(isLiked ? likes - 1 : likes + 1);
   };
 
@@ -41,15 +41,17 @@ const MenuItem = ({ item, isOwner=false }) => {
       <div className="menu-item">
         <img src={curMenuItem.imageUrlPath ? curMenuItem.imageUrlPath : "https://tastetrailblobstorage.blob.core.windows.net/menuitem-images/default-image.png"}  alt={curMenuItem.name} className="menu-item-image" />
         <div className="menu-item-details">
-          <h2 className="menu-item-name">{curMenuItem.name}</h2>
-          <p className="menu-item-description">{curMenuItem.description}</p>
-          <p className="menu-item-price">${Number(curMenuItem.price).toFixed(2)}</p>
-          <div className="menu-item-actions">
-            <button className={`like-button ${isLiked ? "liked" : ""}`} onClick={handleLike}>
-              {isLiked ? "❤️" : "🤍"} {likes}
-            </button>
+          <div className="menu-item-info">
+            <h2 className="menu-item-name">{curMenuItem.name}</h2>
+            <p className="menu-item-description">{curMenuItem.description}</p>
+            <p className="menu-item-price">${Number(curMenuItem.price).toFixed(2)}</p>
+            <div className="menu-item-actions">
+              <button className={`like-button ${isLiked ? "liked" : ""}`} onClick={handleLike}>
+                {isLiked ? "❤️" : "🤍"} {likes}
+              </button>
+            </div>
           </div>
-          {isOwner && <div>
+          {isOwner && <div className="menu-item-btns">
             <Button onClick={handleEdit}>Edit</Button> 
             <label onChange={handleFile} htmlFor="formId">
               <input name="" type="file" id="formId" hidden accept="image/*" /> 

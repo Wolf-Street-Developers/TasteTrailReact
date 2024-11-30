@@ -10,6 +10,7 @@ import MenuItem from "../components/MenuItem/MenuItem";
 import Pagination from "../components/Pagination/Pagination";
 import Search from "../components/Search/Search";
 import { useRole } from "../RoleContext";
+import "./MenuPage.css"
 
 const MenuPage = () => {
   const {venueId, menuId} = useParams();
@@ -25,7 +26,7 @@ const MenuPage = () => {
 
   const [menuItemPage, setMenuItemPage] = useState(1)
 
-  const menuItemPageSize = 1;
+  const menuItemPageSize = 12;
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -33,6 +34,8 @@ const MenuPage = () => {
   useEffect(()=>{
     if(role === "Owner") {
       getMyVenues().then((u)=>{
+        console.log(u.data)
+        console.log(Number(venueId))
         u.data.forEach((val)=>{
           if(Number(val.id) === Number(venueId)
           ){
@@ -62,11 +65,15 @@ const MenuPage = () => {
   },[menuItemPage])
   return (
     <div>
-      {menu && <Menu menu={menu} isOwner={isOwner}/>}
+      <div className="menu-page-menu">
+        {menu && <Menu menu={menu} isOwner={isOwner}/>}
+      </div>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} filter={filter} setFilter={setFilter} handleSearch={handleSearch}/>
-      {menuItems.map((item)=>
-        <MenuItem item={item} isOwner={isOwner} key={item.id}/>
-      )}
+      <div className="menu-page-menu-items">
+        {menuItems.map((item)=>
+          <MenuItem item={item} isOwner={isOwner} key={item.id}/>
+        )}
+      </div>
       <Pagination type="MenuItems" setPage={setMenuItemPage} page={menuItemPage} id={menuId} count={menuItemPageSize}/>
       {isOwner && <Button onClick={openModal}>Add item</Button>}
       {isModalOpen && (
