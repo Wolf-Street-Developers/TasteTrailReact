@@ -164,8 +164,7 @@ margin: 50px auto;
 }
 
 /* Button styling */
-.feedback-item-like-button,
-.venue-container button {
+.feedback-item-like-button {
   background-color: #ff4500;
   color: white;
   padding: 8px 12px;
@@ -175,7 +174,7 @@ margin: 50px auto;
   transition: background-color 0.3s;
 }
 
-.feedback-item-like-button:hover,
-.venue-container button:hover {
+.feedback-item-like-button:hover
+{
   background-color: #ff6f00;
 }
