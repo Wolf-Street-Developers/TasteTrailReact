@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_URL = "http://40.67.193.169:7000";
+const API_URL = "http://135.236.96.117:9001";
 
 
 export const getVenues = (type, pageNumber, pageSize, searchterm="") => {

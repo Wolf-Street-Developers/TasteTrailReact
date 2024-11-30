@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_URL = "http://135.236.238.56:5000";
+const API_URL = "http://135.236.96.117:7000";
 
 
 export const getUsersCount = ( type=9 ) => {

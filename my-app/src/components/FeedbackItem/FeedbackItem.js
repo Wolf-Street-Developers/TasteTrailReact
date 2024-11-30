@@ -8,6 +8,7 @@ const FeedbackItem = ({ feedback }) => {
   const handleLike = () => {
     setIsLiked(!isLiked);
     setLikes(isLiked ? likes - 1 : likes + 1);
+    
   };
 
   const formattedDate = new Date(feedback.creationDate).toLocaleDateString('en-US', {

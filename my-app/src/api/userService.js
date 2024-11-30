@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_URL = "http://20.123.63.95:5000";
+const API_URL = "http://135.236.96.117:5000";
 
 export const getUserRoles = () => {
   return axios.get (
