@@ -66,7 +66,7 @@ const MenuPage = () => {
   return (
     <div>
       <div className="menu-page-menu">
-        {menu && <Menu menu={menu} isOwner={isOwner}/>}
+        {menu && <Menu menu={menu} isOwner={isOwner} venueId={venueId}/>}
       </div>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} filter={filter} setFilter={setFilter} handleSearch={handleSearch}/>
       <div className="menu-page-menu-items">

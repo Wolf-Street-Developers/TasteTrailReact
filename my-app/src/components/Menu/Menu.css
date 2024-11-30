@@ -55,5 +55,5 @@
   .menu-info {
     display: flex;
     justify-content: space-between;
-    gap: 100%;
+    width: 100%;
   }

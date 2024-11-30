@@ -1,18 +1,17 @@
 .page-buttons-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     position: fixed;
     bottom: 20px;
-    left: 50%;
-    transform: translate(-50%, 0);
 }
 
 .page-buttons-container-no-fixed {
     display: flex;
     align-items: center;
+    justify-content: center;
+    bottom: 0;
     gap: 10px;
     bottom: 20px;
-    left: 50%;
-    transform: translate(-50%, 0);
 }
