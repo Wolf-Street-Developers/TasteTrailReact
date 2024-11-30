@@ -25,13 +25,14 @@
     padding: 18px 15px;
     display: block;
     letter-spacing: 0.5px;
+    cursor: pointer;
 }
 
 a {
     display:inline-block;
 }
 
-a:hover {
+.header_item:hover {
     background-color: #4A4A4A;
     transition: background-color 0.3s ease
 }

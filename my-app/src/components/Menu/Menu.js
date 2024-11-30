@@ -8,10 +8,9 @@ import { setMenuImage, updateMenu } from "../../api/ownerService"
 
 const Menu = ({menu, isOwner=false}) => {
     const navigate = useNavigate()
-    const {menuId} = useParams()
+    const {id} = useParams()
     const [curMenu, setCurMenu] = useState(menu)
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const editMenu = (updatedMenu) => {
         setCurMenu(updatedMenu)
         updateMenu(updatedMenu)
@@ -22,13 +21,13 @@ const Menu = ({menu, isOwner=false}) => {
     }
 
     const handleFile = (event) => {
-        console.log(menuId)
+        console.log(id)
         setCurMenu({...curMenu, imageUrlPath:  URL.createObjectURL(event.target.files[0])});
-        setMenuImage(event.target.files[0], menuId)
+        setMenuImage(event.target.files[0], id)
     }
     return(
         <>
-            <div className="menu-display" onClick={()=>navigate(`/${isOwner ? "myVenue" : `venue/${menuId}`}/${menu.id}`)}>
+            <div className="menu-display" onClick={()=>{navigate(`/${isOwner ? "myVenue" : `venue/${id}`}/${menu.id}`)}}>
                 <img src={curMenu.imageUrlPath?curMenu.imageUrlPath:"https://tastetrailblobstorage.blob.core.windows.net/menu-images/default-image.png"} alt={`${curMenu.name} logo`} className="menu-image" />
                 <div className="menu-details">
                     <h2 className="menu-name">{curMenu.name}</h2>

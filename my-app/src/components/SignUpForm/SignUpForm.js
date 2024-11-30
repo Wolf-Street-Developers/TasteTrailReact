@@ -4,6 +4,8 @@ import Input from "../Input/Input";
 import Button from "../Buttton/Button";
 import { register } from "../../api/authService";
 import { useNavigate } from 'react-router-dom';
+import { getUserRoles } from "../../api/userService";
+import { useRole } from "../../RoleContext";
 
 const SignUpForm = () => {
     const [userName, setUserName] = useState("")
@@ -11,11 +13,15 @@ const SignUpForm = () => {
     const [password, setPassword] = useState("")
 
     const navigate = useNavigate();
+    const { updateRole } = useRole();
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        
-        register(userName, email, password).then(()=>{navigate('/')}).catch(() => {})
+
+        register(userName, email, password).then(()=>{getUserRoles().then(rolesResponse => {
+          const role = rolesResponse.data.roles[0];
+          updateRole(role);  // Set the role in global state
+        }).then(()=>navigate('/'))}).catch(() => {})
     }
 
     return (

@@ -13,10 +13,11 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './api/axiosConfig';
 import MenuPage from "./pages/MenuPage";
+import { RoleProvider } from "./RoleContext";
 
 function App() {
   return (
-    <>
+    <RoleProvider>
       <BrowserRouter>
         <Header/>
         <Routes>
@@ -34,8 +35,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <ToastContainer />
-    </>
-
+    </RoleProvider>
   );
 }
 
