@@ -191,3 +191,52 @@ export const updateMenuItem = ({ id, name, description, price }) => {
     throw new Error(error.response?.data?.message || "Can not update menu");
   });
 };
+
+export const setMenuItemImage = ( image, menuItemId ) => {
+  const formData = new FormData();
+  formData.append('image', image);
+  return axios.post(
+    `${API_URL}/api/MenuItem/SetImage?menuItemId=${menuItemId}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    }
+  )
+  .then(response => {
+    return response;
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not set menu item image"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    });
+    console.error(error);
+    throw new Error(error.response?.data?.message || "Can not set menu item image");
+  });
+};
+
+
+export const setMenuImage = ( image, menuId ) => {
+  const formData = new FormData();
+  formData.append('image', image);
+  return axios.post(
+    `${API_URL}/api/Menu/SetImage?menuId=${menuId}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
+    }
+  )
+  .then(response => {
+    return response;
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not set menu image"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    });
+    console.error(error);
+    throw new Error(error.response?.data?.message || "Can not set menu image");
+  });
+};

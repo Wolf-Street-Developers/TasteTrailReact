@@ -3,7 +3,8 @@ import "./MenuItem.css";
 import Modal from "../Modal/Modal";
 import MenuItemForm from "../MenuItemForm/MenuItemForm";
 import Button from "../Buttton/Button";
-import { updateMenuItem } from "../../api/ownerService";
+import { setMenuItemImage, updateMenuItem } from "../../api/ownerService";
+import { postLike } from "../../api/menuService";
 
 const MenuItem = ({ item, isOwner=false }) => {
   const [isLiked, setIsLiked] = useState(item.isLiked);
@@ -12,6 +13,10 @@ const MenuItem = ({ item, isOwner=false }) => {
   const [curMenuItem, setCurMenuItem] = useState(item)
 
   const handleLike = () => {
+    if(!isLiked) {
+      console.log(item)
+      // postLike(item.id)
+    }
     setIsLiked(!isLiked);
     setLikes(isLiked ? likes - 1 : likes + 1);
   };
@@ -24,6 +29,12 @@ const MenuItem = ({ item, isOwner=false }) => {
   const handleEdit = () => {
     setIsModalOpen(true)
   }
+
+  
+  const handleFile = (event) => {
+    setCurMenuItem({...curMenuItem, imageUrlPath:  URL.createObjectURL(event.target.files[0])});
+    setMenuItemImage(event.target.files[0], item.id)
+  };
 
   return (
     <>
@@ -38,7 +49,14 @@ const MenuItem = ({ item, isOwner=false }) => {
               {isLiked ? "❤️" : "🤍"} {likes}
             </button>
           </div>
-          {isOwner && <Button onClick={handleEdit}>Edit</Button>}
+          {isOwner && <div>
+            <Button onClick={handleEdit}>Edit</Button> 
+            <label onChange={handleFile} htmlFor="formId">
+              <input name="" type="file" id="formId" hidden accept="image/*" /> 
+                <div className="menu-item-edit-image-btn"> 
+                  Edit Image 
+                </div> 
+            </label></div>}
         </div>
       </div>
       {isModalOpen && <Modal onClose={()=>setIsModalOpen(false)}><MenuItemForm onSubmit={editMenuItem} initialData={curMenuItem}/></Modal>}

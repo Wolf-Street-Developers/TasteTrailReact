@@ -44,6 +44,34 @@ export const login = (loginIdentifier, password) => {
 };
 
 
+export const logout = () => {
+  return axios.patch (
+    `${API_URL}/api/Authentication/Logout`,
+    `"${localStorage.getItem("refreshToken")}"`,
+    {
+      headers: {
+        "Content-Type": "application/json", // Matches the CURL header
+        Accept: "*/*", // Matches the CURL header
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`, // Use your actual token here
+      }
+    }
+  )
+  .then(response => {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    return response
+  })
+  .catch(error => {
+      toast.error(`${error.response?.data || error.message || "Can not logout"}`, {
+          position: 'bottom-right',
+          autoClose: 3000,  // Close after 3 seconds
+          hideProgressBar: true,
+      });
+      throw error;
+    })
+}
+
+
 // Register user
 export const register = (name, email, password) => {
   return axios.post(

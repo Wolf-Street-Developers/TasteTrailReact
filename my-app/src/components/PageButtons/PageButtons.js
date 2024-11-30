@@ -2,7 +2,7 @@ import "./PageButtons.css"
 import PageButton from "../PageButton/PageButton";
 
 const PageButtons = (props) => {
-    const {page, pages} = props
+    const {page, pages, isNotFixed} = props
 
     const minPage = Math.max(1, page-2)
     const maxPage = Math.min(pages, page+2)
@@ -13,7 +13,7 @@ const PageButtons = (props) => {
     );
     
     return(
-        <div className="page-buttons-container">
+        <div className={`page-buttons-container${isNotFixed ? "-no-fixed" : ""}`}>
             {pageArr.map((value)=><PageButton page={value} setPage={props.setPage} curPage={props.page} key={value}/>)}
         </div>
     )
