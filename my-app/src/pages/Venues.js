@@ -11,8 +11,10 @@ const Venues = () => {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const countOnPage = 12;
+
   const handleSearch = () => {
-    getVenues(Number(filter), page, 10, searchTerm.trim()).then((res) => {
+    getVenues(Number(filter), page, countOnPage, searchTerm.trim()).then((res) => {
       setVenues(res.data.entities);
     });
   };
@@ -32,14 +34,13 @@ const Venues = () => {
         filters={[1, 2, 3, 4, 5]}
       />
       
-      {/* Venue items grid container */}
       <div className="venue-grid">
         {venues.map((item) => (
           <VenueItem item={item} key={item.id} />
         ))}
       </div>
 
-      <Pagination type="Venues" setPage={setPage} page={page} />
+      <Pagination type="Venues" setPage={setPage} page={page} count={countOnPage}/>
     </div>
   );
 };

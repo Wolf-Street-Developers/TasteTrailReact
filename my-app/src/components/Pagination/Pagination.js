@@ -7,9 +7,9 @@ const Pagination = (props) => {
     const [pages, setPages] = useState(0);
     useEffect(()=>{
         if(props.type === "Venues") {
-            getVenueCount().then((res)=>{setPages(Math.ceil(res.data/10))})
+            getVenueCount().then((res)=>{setPages(Math.ceil(res.data/props.count))})
         } else if(props.type === "Users") {
-            getUsersCount().then((res)=>{setPages(Math.ceil(res.data.usersCount/10))})
+            getUsersCount().then((res)=>{setPages(Math.ceil(res.data.usersCount/props.count))})
         } else if(props.type === "Menues") {
             // getMenuesById().then((res)=>{console.log(res)})
         }

@@ -1,3 +1,6 @@
+import React from "react";
+import "./Search.css";
+
 const FILTERS = [
     <option value="0" key={0}>Most liked</option>,
     <option value="1" key={1}>Highest rated</option>,
@@ -12,20 +15,28 @@ const FILTERS = [
 ]
 
 const Search = (props) => {
-    return (
-        <div>
-            <select
-                name="selectedFilter"
-                onChange={(e)=>props.setFilter(e.target.value)}
-                value={props.filter}
-            >
-                {props.filters.map((value)=>FILTERS[value])}
-            </select>
-            <input type="search" onChange={(e)=>{props.setSearchTerm(e.target.value)}} value={props.searchTerm}/>
-            <button onClick={props.handleSearch}>Ok</button>
-        </div>
-      );
-    };
-    
-    
-  export default Search
+  return (
+    <div className="search-container">
+      <select
+        className="search-select"
+        name="selectedFilter"
+        onChange={(e) => props.setFilter(e.target.value)}
+        value={props.filter}
+      >
+        {props.filters.map((value) => FILTERS[value])}
+      </select>
+      <input
+        className="search-input"
+        type="search"
+        placeholder="Search..."
+        onChange={(e) => props.setSearchTerm(e.target.value)}
+        value={props.searchTerm}
+      />
+      <button className="search-button" onClick={props.handleSearch}>
+        Search
+      </button>
+    </div>
+  );
+};
+
+export default Search;
