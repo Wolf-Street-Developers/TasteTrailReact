@@ -4,17 +4,22 @@ import Input from "../Input/Input";
 import Button from "../Buttton/Button";
 import { login } from "../../api/authService";
 import { useNavigate } from 'react-router-dom';
+import { useRole } from "../../RoleContext";
+import { getUserRoles } from "../../api/userService";
 
 const LogInForm = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     const navigate = useNavigate();
+    const { updateRole } = useRole();
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        
-        login(email, password).then(()=>{navigate('/')}).catch(() => {})
+        login(email, password).then(()=>{getUserRoles().then(rolesResponse => {
+          const role = rolesResponse.data.roles[0];
+          updateRole(role);  // Set the role in global state
+        }).then(()=>navigate('/'))}).catch(() => {})
     }
 
     return (

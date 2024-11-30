@@ -8,9 +8,11 @@ import { getMyVenues } from "../api/ownerService";
 import FeedbackForm from "../components/FeedbackForm/FeedbackForm";
 import FeedbackItem from "../components/FeedbackItem/FeedbackItem";
 import Pagination from "../components/Pagination/Pagination";
+import { useRole } from "../RoleContext";
 
 const Venue = () => {
   const {id} = useParams();
+  const {role} = useRole()
 
   const [isOwner, setIsOwner] = useState(false)
   const [venue, setVenue] = useState({})
@@ -24,14 +26,18 @@ const Venue = () => {
   const feedbackPageSize = 1;
   
   useEffect(()=>{
-    getMyVenues().then((u)=>{
-      u.data.forEach((val)=>{
-        if(Number(val.id) === Number(id)
-        ){
-          setIsOwner(true);
-        }
+    if(role === "Owner") {
+      getMyVenues().then((u)=>{
+        u.data.forEach((val)=>{
+          if(Number(val.id) === Number(id)
+          ) {
+            setIsOwner(true);
+          }
+        })
       })
-    })
+    } else {
+      setIsOwner(false)
+    }
     getVenueById(id).then((res)=>{
       setVenue(res.data);
       setPosition([res.data.latitude, res.data.longtitude]);
