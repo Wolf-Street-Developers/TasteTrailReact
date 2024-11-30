@@ -184,7 +184,6 @@ export const postFeedback = ({text, rating, venueId}) => {
 
 
 export const postLike = ({menuItemId}) => {
-  console.log({menuItemId})
   return axios.post(
       `${API_URL}/api/MenuItemLike`, 
       {menuItemId},
@@ -210,7 +209,6 @@ export const postLike = ({menuItemId}) => {
 
 
 export const deleteLike = ({menuItemId}) => {
-  console.log({menuItemId})
   return axios.delete(
       `${API_URL}/api/MenuItemLike?menuItemId=${menuItemId}`,
       {
@@ -233,3 +231,53 @@ export const deleteLike = ({menuItemId}) => {
   })
 }
 
+
+export const postFeedbackLike = ({feedbackId}) => {
+  console.log({feedbackId})
+  return axios.post(
+      `${API_URL}/api/FeedbackLike`, 
+      {feedbackId},
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+  )
+  .then(response => {
+    return response
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not like feedback"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    })
+    console.log(error)
+    throw new Error(error.response?.data?.message || "Can not like feedback");
+  })
+}
+
+
+
+export const deleteFeedbackLike = ({feedbackId}) => {
+  return axios.delete(
+      `${API_URL}/api/FeedbackLike?feedbackId=${feedbackId}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+  )
+  .then(response => {
+    return response
+  })
+  .catch(error => {
+    toast.error(`${error.response?.data || error.message || "Can not like feedback"}`, {
+        position: 'bottom-right',
+        autoClose: 3000,
+        hideProgressBar: true,
+    })
+    console.log(error)
+    throw new Error(error.response?.data?.message || "Can not like feedback");
+  })
+}

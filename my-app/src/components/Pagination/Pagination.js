@@ -17,14 +17,14 @@ const Pagination = (props) => {
         } else if(props.type === "MenuItems") {
             getMenueItemsById(props.id).then((res)=>{setPages(Math.ceil(res.data.amountOfEntities/props.count));})
         } else if(props.type === "Feedbacks") {
-            getFeedbacksByVenue(props.id).then((res)=>{console.log(res.data)})
-            // getFeedbacksByVenue(props.id).then((res)=>{console.log(Math.ceil(res.data.entities.length/props.count))})
+            getFeedbacksByVenue(props.id).then((res)=>{setPages(res.data.amountOfEntities/props.count)})
+            setIsNotFixed(true)
         }
     },[])
     
     return (
-        <div>
-            <PageButtons page={props.page} pages={pages} setPage={props.setPage} isNotFixed={isNotFixed}/>
+        <div className="page-buttons">
+            {pages > 1 && <PageButtons page={props.page} pages={pages} setPage={props.setPage} isNotFixed={isNotFixed}/>}
         </div>
     );
   };

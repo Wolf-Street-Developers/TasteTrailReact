@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
 import "./FeedbackItem.css"
+import { deleteFeedbackLike, postFeedbackLike } from '../../api/menuService';
 
 const FeedbackItem = ({ feedback }) => {
   const [isLiked, setIsLiked] = useState(feedback.isLiked);
   const [likes, setLikes] = useState(feedback.likes);
 
   const handleLike = () => {
-    setIsLiked(!isLiked);
+    if(!isLiked) {
+      postFeedbackLike({feedbackId: feedback.id}).then(()=>{setIsLiked(true);})
+    } else {
+      deleteFeedbackLike({feedbackId: feedback.id}).then(()=>{setIsLiked(false);})
+    }
     setLikes(isLiked ? likes - 1 : likes + 1);
   };
 

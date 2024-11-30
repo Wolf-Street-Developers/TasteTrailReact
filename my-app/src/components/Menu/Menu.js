@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Menu.css";
 import Button from "../Buttton/Button";
 import { useState } from "react";
@@ -8,7 +8,6 @@ import { setMenuImage, updateMenu } from "../../api/ownerService";
 
 const Menu = ({ menu, isOwner = false, venueId }) => {
   const navigate = useNavigate();
-  const { id } = useParams();
   const [curMenu, setCurMenu] = useState(menu);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const editMenu = (updatedMenu) => {
@@ -26,7 +25,7 @@ const Menu = ({ menu, isOwner = false, venueId }) => {
       ...curMenu,
       imageUrlPath: URL.createObjectURL(event.target.files[0]),
     });
-    setMenuImage(event.target.files[0], id);
+    setMenuImage(event.target.files[0], venueId);
   };
   return (
     <>
@@ -35,7 +34,7 @@ const Menu = ({ menu, isOwner = false, venueId }) => {
         onClick={() => {
           console.log(venueId);
           navigate(
-            `/${isOwner ? `myVenue/${venueId || id}` : `venue/${id}`}/${
+            `/${`venue/${venueId}`}/${
               menu.id
             }`
           );
@@ -56,7 +55,7 @@ const Menu = ({ menu, isOwner = false, venueId }) => {
             <p className="menu-description">{curMenu.description}</p>
           </div>
           {isOwner && (
-            <div>
+            <div className="menu-edit-btns">
               <Button className="menu-edit-button" onClick={handleEdit}>
                 Edit
               </Button>
