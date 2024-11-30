@@ -17,7 +17,7 @@ const FILTERS = [
 const Search = (props) => {
   return (
     <div className="search-container">
-      <select
+      {props.filters && <select
         className="search-select"
         name="selectedFilter"
         onChange={(e) => props.setFilter(e.target.value)}
@@ -25,6 +25,7 @@ const Search = (props) => {
       >
         {props.filters.map((value) => FILTERS[value])}
       </select>
+}
       <input
         className="search-input"
         type="search"
