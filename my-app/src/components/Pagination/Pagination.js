@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMenuesById, getVenueCount } from "../../api/menuService";
+import { getVenueCount } from "../../api/menuService";
 import { getUsersCount } from "../../api/adminService";
 import PageButtons from "../PageButtons/PageButtons";
 
