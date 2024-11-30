@@ -10,6 +10,7 @@ import LocationIcon from '../assets/icons/location.png';
 import EmailIcon from '../assets/icons/email.png';
 import PhoneIcon from '../assets/icons/telephone.png';
 import { StarRating } from '../components/StarRating/StarRating'
+import LoaderWrapper from "../components/LoaderWrapper/LoaderWrapper";
 
 
 const Venue = () => {
@@ -19,6 +20,8 @@ const Venue = () => {
   const [isOwner, setIsOwner] = useState(false)
   const [venue, setVenue] = useState({})
   const [position, setPosition] = useState([51.505, -0.09])
+
+  const [isLoading, setIsLoading] = useState(true);
 
   
   useEffect(()=>{
@@ -37,10 +40,12 @@ const Venue = () => {
     getVenueById(id).then((res)=>{
       setVenue(res.data);
       setPosition([res.data.latitude, res.data.longtitude]);
+      setIsLoading(false)
     })
   },[id, role])
 
   return (
+    <LoaderWrapper isLoading={isLoading}>
     <div className="main-container">
       <div className="venue-head-info">
         <div className="venue-name">{venue.name}</div>
@@ -104,6 +109,7 @@ const Venue = () => {
         <TabComponent isOwner={isOwner} venueId={id}/>
       </div>
     </div>
+    </LoaderWrapper>
   );
 };
 

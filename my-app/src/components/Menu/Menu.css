@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    border: 2px solid orangered;
+    /* border: 2px solid orangered; */
     border-radius: 8px;
     padding: 16px;
     width: 30vw;
@@ -27,7 +27,6 @@
     border-radius: 8px;
     margin-right: 16px;
     object-fit: cover;
-    border: 2px solid #cfcfcf;
   }
   
   .menu-details {

@@ -83,10 +83,8 @@
   /* Details Section */
   .profile-details {
     background-color: rgb(255, 255, 255);
-    border: 1px solid #2d2d2d;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .detail-row {
@@ -119,7 +117,7 @@
   display: block;
   text-align: center;
   margin-top: 10px;
-  background-color: rgb(255, 68, 0);
+  background-color: black;
   color: white;
   border: none;
   padding: 8px 16px;

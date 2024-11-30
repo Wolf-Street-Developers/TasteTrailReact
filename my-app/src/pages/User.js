@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import Avatar from "../components/Avatar/Avatar";
 import { getUserRoles, setAvatar } from "../api/userService";
 import "./User.css";
+import LoaderWrapper from "../components/LoaderWrapper/LoaderWrapper";
 
 const User = () => {
   const [user, setUser] = useState();
   const [chosenFile, setChosenFile] = useState()
+
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     getUserRoles().then((u) => {
       setUser(u.data.user);
+      setIsLoading(false)
       console.log(u.data.user);
     });
   }, []);
@@ -19,6 +24,7 @@ const User = () => {
   };
 
   return (
+    <LoaderWrapper isLoading={isLoading}>
     <div className="user-page">
       <header className="user-header">
         <div className="user-welcome">
@@ -35,9 +41,9 @@ const User = () => {
           </div>
           <label onChange={handleFile} htmlFor="formId">
           <input name="" type="file" id="formId" hidden accept="image/*" /> 
-          <div className="edit-image-btn"> 
-            Edit Image 
-          </div> 
+            <button className="edit-image-btn"> 
+              Edit Image 
+            </button> 
           </label>
         </div>
 
@@ -57,6 +63,7 @@ const User = () => {
         </div>
       </div>
     </div>
+    </LoaderWrapper>
   );
 };
 

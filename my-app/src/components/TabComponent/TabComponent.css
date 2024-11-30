@@ -1,6 +1,8 @@
 .tabs {
     display: flex;
     gap: 10px;
+
+    margin-bottom: 35px;
 }
   
 .tabBtn {
@@ -17,8 +19,8 @@
   color: black;
   transition: color 0.3s;
   text-decoration: underline;
-  text-decoration-thickness: 2px; /* Optional: Adjust underline thickness */
-  text-underline-offset: 10px; /* Adjust the space between text and underline */
+  text-decoration-thickness: 2px;
+  text-underline-offset: 10px;
 }
 
 .tabBtnActive {

@@ -25,9 +25,10 @@ const LogInForm = () => {
     return (
       <div className="Log-in-container">
         <form onSubmit={handleSubmit}>
-          <label>Email</label>
+          <div className="input-label">Email</div>
           <Input value = {email} onChange={(e)=>setEmail(e.target.value)} placeHolder="Email" required/>
-          <label>Password</label>
+
+          <div className="input-label">Password</div>
           <Input value = {password} onChange={(e)=>setPassword(e.target.value)} placeHolder="Password" canBeHidden required maxlength={12}/>
           <div className="Log-in-buttons">
             <Button type="submit">Submit</Button>

@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.input-label {
+    margin-bottom: 10px;
+}
+
 .Log-in-buttons {
     display: flex;
     justify-content: center;
