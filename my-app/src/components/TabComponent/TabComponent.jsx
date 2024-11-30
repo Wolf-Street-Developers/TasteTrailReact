@@ -3,7 +3,7 @@ import Menu from "../Menu/Menu";
 import FeedbackItem from "../FeedbackItem/FeedbackItem";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 import { getFeedbacksByVenue, getMenuesById } from "../../api/menuService";
-import styles from './TabComponent.module.css'
+import './TabComponent.css'
 
 const TabComponent = ( { isOwner, venueId }) => {
   const [activeTab, setActiveTab] = useState('menu');
@@ -29,13 +29,14 @@ const TabComponent = ( { isOwner, venueId }) => {
     <div>
       <div className="tabs">
         <button
-          className={styles.tabBtn && activeTab === 'menu' ? styles.active : ''}
+          className={'tabBtn ' + (activeTab === 'menu' ? 'tabBtnActive' : '')}
           onClick={() => switchTab('menu')}
         >
           Menus
         </button>
+
         <button
-          className={'tab-btn' && activeTab === 'review' ? 'tab-btn-active' : ''}
+          className={'tabBtn ' + (activeTab === 'review' ? 'tabBtnActive' : '')}
           onClick={() => switchTab('review')}
         >
           Feedbacks
@@ -50,7 +51,6 @@ const TabComponent = ( { isOwner, venueId }) => {
         )}
         {activeTab === 'review' && (
             <div className="venue-feedbacks">
-                <h2>Add feedback:</h2>
                 <FeedbackForm venueId = {venueId} updateFeedbacks={() => {
                     getFeedbacksByVenue(venueId).then((res) => {
                         setFeedbacks(res.data.entities)
