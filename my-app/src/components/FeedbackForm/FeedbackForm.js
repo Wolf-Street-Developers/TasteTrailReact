@@ -24,8 +24,9 @@ const FeedbackForm = ({venueId, updateFeedbacks}) => {
       <form onSubmit={handleSubmit} className="feedback-form">
         <label className="feedback-form-label">
           Feedback:
-          <input
-            type="text"
+          <textarea 
+            type="textarea"
+            rows="10"
             name="text"
             value={formData.text}
             onChange={handleChange}

@@ -5,13 +5,18 @@ import VenueTab from "../components/VenueTab/VenueTab";
 import "./MyVenue.css";
 import { createVenue, getMyVenues, setImage, updateVenue } from "../api/ownerService";
 import MenuList from "../components/MenuList/MenuList";
+import { useNavigate } from "react-router-dom";
 
 const MyVenue = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [venues, setVenues] = useState([]);
   const [selectedVenue, setSelectedVenue] = useState(null);
   const [editingVenue, setEditingVenue] = useState(null);
-  const [chosenFile, setChosenFile] = useState(null)
+  const [rand, setRand] = useState(0)
+  const [choosenFile, setChoosenFile] = useState(null)
+  const [choosenId, setChoosenId] = useState(null)
+
+  const navigate = useNavigate()
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => {
@@ -35,18 +40,19 @@ const MyVenue = () => {
   };
 
   const handleEditClick = (index) => {
-    setEditingVenue({ ...venues[index], index });
-    openModal();
+    navigate(`/updateVenue/${venues[index].id}`)
   };
 
   const handleFile = (event) => {
-    setChosenFile(event.target.files[0]);
+    setChoosenFile(event.target.files[0]);
+    setChoosenId(venues[selectedVenue].id)
     setImage(event.target.files[0], venues[selectedVenue].id)
   };
 
   useEffect(() => {
     getMyVenues().then((u) => {
       setVenues(u.data);
+      setRand(Math.random())
     });
   }, [selectedVenue]);
 
@@ -69,7 +75,7 @@ const MyVenue = () => {
             onEdit={() => handleEditClick(index)}
           />
         ))}
-        <button className="open-modal-btn" onClick={openModal}>
+        <button className="open-modal-btn" onClick={()=>navigate("/createVenue")}>
           +
         </button>
       </div>
@@ -87,7 +93,7 @@ const MyVenue = () => {
           </div>
           <div className="my-venue-logo-container">
             <div className="my-venue-logo">
-              <img alt="Logo" src={chosenFile ? URL.createObjectURL(chosenFile) : venues[selectedVenue].logoUrlPath} width={456} height={512}/>
+              <img alt="Logo" src={(choosenFile && venues[selectedVenue].id===choosenId) ? URL.createObjectURL(choosenFile) : venues[selectedVenue].logoUrlPath + `?v=${rand}`} width={456} height={512}/>
             </div>
             {/* <input className="edit-image-btn" onClick={onFileChange} type="file"/> */}
             <label onChange={handleFile} htmlFor="formId">

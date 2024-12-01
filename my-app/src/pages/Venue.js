@@ -60,7 +60,7 @@ const Venue = () => {
       </div>
       <div className="venue-container">
         <div className="venue-img-wrapper">
-            <img className="venue-img" alt="logo" src={venue.logoUrlPath}/>
+            <img className="venue-img" alt="logo" src={venue.logoUrlPath + `?v=${Math.random()}`}/>
         </div>
 
         <div className="venue-info-wrapper">

@@ -58,7 +58,7 @@ const TabComponent = ( { isOwner, venueId }) => {
       <div className="tab-content">
         {activeTab === 'menu' && (
             <div className="venue-menues">
-            {menues.map((item)=><Menu menu={item} key={item.id}/>)}
+            {menues.map((item)=><Menu menu={item} key={item.id} venueId={venueId}/>)}
             <Pagination type="Menues" setPage={setPage} page={page} count={countOnPage} id={venueId}/>
             </div>
         )}

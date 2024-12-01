@@ -19,7 +19,7 @@ const User = () => {
   }, []);
 
   const handleFile = (event) => {
-    setAvatar(event.target.files[0]);
+    setAvatar(event.target.files[0]).then((res)=>{console.log(res)});
     setChosenFile(event.target.files[0]);
   };
 
@@ -35,7 +35,7 @@ const User = () => {
 
       <div className="user-profile">
         <div className="profile-card">
-          <Avatar avatar={(chosenFile && URL.createObjectURL(chosenFile)) || user?.avatarPath} size="large" />
+          <Avatar avatar={(chosenFile && URL.createObjectURL(chosenFile)) || user?.avatarPath + `?v=${Math.random()}`} size="large" />
           <div className="profile-info">
             <h3>{user?.userName || "User Name"}</h3>
           </div>
