@@ -39,7 +39,7 @@ const MenuItem = ({ item, isOwner=false }) => {
   return (
     <>
       <div className="menu-item">
-        <img src={curMenuItem.imageUrlPath ? curMenuItem.imageUrlPath : "https://tastetrailblobstorage.blob.core.windows.net/menuitem-images/default-image.png"}  alt={curMenuItem.name} className="menu-item-image" />
+        {/* <img src={curMenuItem.imageUrlPath ? curMenuItem.imageUrlPath : "https://tastetrailblobstorage.blob.core.windows.net/menuitem-images/default-image.png"}  alt={curMenuItem.name} className="menu-item-image" /> */}
         <div className="menu-item-details">
           <div className="menu-item-info">
             <h2 className="menu-item-name">{curMenuItem.name}</h2>
@@ -51,15 +51,15 @@ const MenuItem = ({ item, isOwner=false }) => {
               </button>
             </div>
           </div>
-          {isOwner && <div className="menu-item-btns">
+        </div>
+        {isOwner && <div className="menu-item-btns">
             <Button onClick={handleEdit}>Edit</Button> 
             <label onChange={handleFile} htmlFor="formId">
               <input name="" type="file" id="formId" hidden accept="image/*" /> 
-                <div className="menu-item-edit-image-btn"> 
+                {/* <div className="menu-item-edit-image-btn"> 
                   Edit Image 
-                </div> 
+                </div>  */}
             </label></div>}
-        </div>
       </div>
       {isModalOpen && <Modal onClose={()=>setIsModalOpen(false)}><MenuItemForm onSubmit={editMenuItem} initialData={curMenuItem}/></Modal>}
     </>

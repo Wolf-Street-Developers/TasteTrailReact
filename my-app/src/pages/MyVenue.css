@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    margin: 0px 200px;
   }
   
   .open-modal-btn {
@@ -22,12 +23,15 @@
   .my-venue-tabs {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; /* Позволяет перенос строк */
+    gap: 10px; /* Расстояние между элементами */
   }
   
   .my-venue-info {
     display: flex;
     flex-direction: row;
     gap: 10vw;
+    width: 100%;
   }
 
   .my-venue-logo-container{
