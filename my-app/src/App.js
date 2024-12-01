@@ -15,6 +15,7 @@ import './api/axiosConfig';
 import MenuPage from "./pages/MenuPage";
 import { RoleProvider } from "./RoleContext";
 import CreateVenue from "./pages/CreateVenue";
+import UpdateVenue from "./pages/UpdateVenue";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/myVenue/:venueId/:menuId" element={<MenuPage />}/>
           <Route path="/admin" element={<AdminDashboard />}/>
           <Route path="/createVenue" element={<CreateVenue />}/>
+          <Route path="/updateVenue/:venueId" element={<UpdateVenue />}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer />

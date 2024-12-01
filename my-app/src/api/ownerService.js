@@ -48,6 +48,7 @@ export const createVenue = ({name, address, description, email, contactNumber, a
 }
 
 export const updateVenue = ({ id, name, address, description, email, contactNumber, averagePrice, longtitude, latitude, logoUrlPath }) => {
+  console.log({ id, name, address, description, email, contactNumber, averagePrice, longtitude, latitude, logoUrlPath })
   return axios.put(
     `${API_URL}/api/Venue/Update`,
     { id, name, address, description, email, contactNumber, averagePrice, longtitude, latitude, logoUrlPath },

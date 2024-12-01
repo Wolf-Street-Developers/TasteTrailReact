@@ -40,8 +40,7 @@ const MyVenue = () => {
   };
 
   const handleEditClick = (index) => {
-    setEditingVenue({ ...venues[index], index });
-    openModal();
+    navigate(`/updateVenue/${venues[index].id}`)
   };
 
   const handleFile = (event) => {
