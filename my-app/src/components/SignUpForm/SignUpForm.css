@@ -10,3 +10,7 @@
     display: flex;
     justify-content: center;
 }
+
+.sign-up-label {
+    margin-bottom: 10px;
+}

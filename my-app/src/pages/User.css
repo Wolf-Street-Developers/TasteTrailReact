@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgb(255, 166, 0);
+    border-bottom: 2px solid #2d2d2d;
     padding-bottom: 10px;
     margin-bottom: 20px;
   }
@@ -26,7 +26,7 @@
   
   .user-welcome span {
     font-size: 0.9rem;
-    color: rgb(182, 48, 0);
+    color: #2d2d2d;
   }
   
   .user-avatar {
@@ -49,10 +49,10 @@
     align-items: center;
     text-align: center;
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(255, 166, 0);
+    /* border: 1px solid #2d2d2d; */
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   }
   
   .profile-card h3 {
@@ -63,7 +63,7 @@
   
   .profile-card p {
     font-size: 1rem;
-    color: rgb(182, 48, 0);
+    color: #2d2d2d;
   }
   
   .edit-button {
@@ -83,10 +83,8 @@
   /* Details Section */
   .profile-details {
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(255, 166, 0);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .detail-row {
@@ -101,7 +99,7 @@
   }
   
   .detail-row span {
-    color: rgb(182, 48, 0);
+    color: #2d2d2d;
   }
   
 
@@ -115,11 +113,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.edit-avatar-btn {
+.edit-image-btn {
   display: block;
   text-align: center;
   margin-top: 10px;
-  background-color: rgb(255, 68, 0);
+  background-color: black;
   color: white;
   border: none;
   padding: 8px 16px;

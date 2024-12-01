@@ -19,7 +19,7 @@ const Header = () => {
             <Link className={styles.header_item} to="venues">Venues</Link>
             {(role === "User" || role === "Admin" || role === "Owner")  
               && <Link className={styles.header_item} to="user">User</Link>}
-            {role === "Owner" && <Link className={styles.header_item} to="myVenue">My Venue</Link>}
+            {role === "Owner" && <Link className={styles.header_item} to="myVenue">My Venues</Link>}
         </div>
 
         <div className={styles.header_container}>

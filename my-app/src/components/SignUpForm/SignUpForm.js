@@ -27,11 +27,11 @@ const SignUpForm = () => {
     return (
       <div className="Log-in-container">
         <form onSubmit={handleSubmit}>
-          <label>Your username</label>
+          <div className="sign-up-label">Username</div>
           <Input value = {userName} onChange={(e)=>setUserName(e.target.value)} placeHolder="Name" required/>
-          <label>Email</label>
+          <div className="sign-up-label">Email</div>
           <Input value = {email} onChange={(e)=>setEmail(e.target.value)} placeHolder="Email" required/>
-          <label>Password</label>
+          <div className="sign-up-label">Password</div>
           <Input value = {password} onChange={(e)=>setPassword(e.target.value)} placeHolder="Password" canBeHidden required maxlength={12}/>
           <div className="Log-in-buttons">
             <Button type="submit">Submit</Button>

@@ -2,16 +2,20 @@ import { useEffect, useState } from "react";
 import Avatar from "../components/Avatar/Avatar";
 import { getUserRoles, setAvatar } from "../api/userService";
 import "./User.css";
+import LoaderWrapper from "../components/LoaderWrapper/LoaderWrapper";
 
 const User = () => {
   const [user, setUser] = useState();
   const [chosenFile, setChosenFile] = useState()
-  const updateUser = ()=>{
-    getUserRoles().then((u) => {
-    setUser(u.data.user);
-  });}
+
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    updateUser()
+    getUserRoles().then((u) => {
+      setUser(u.data.user);
+      setIsLoading(false)
+      console.log(u.data.user);
+    });
   }, []);
 
   const handleFile = (event) => {
@@ -20,6 +24,7 @@ const User = () => {
   };
 
   return (
+    <LoaderWrapper isLoading={isLoading}>
     <div className="user-page">
       <header className="user-header">
         <div className="user-welcome">
@@ -33,48 +38,32 @@ const User = () => {
           <Avatar avatar={(chosenFile && URL.createObjectURL(chosenFile)) || user?.avatarPath + `?v=${Math.random()}`} size="large" />
           <div className="profile-info">
             <h3>{user?.userName || "User Name"}</h3>
-            <p>{user?.email || "No email provided"}</p>
           </div>
           <label onChange={handleFile} htmlFor="formId">
           <input name="" type="file" id="formId" hidden accept="image/*" /> 
-          <div className="edit-image-btn"> 
-          Edit Image 
-          </div> 
+            <button className="edit-image-btn"> 
+              Edit Image 
+            </button> 
           </label>
         </div>
 
         <div className="profile-details">
           <div className="detail-row">
-            <strong>Email:</strong>
+            <strong>Email</strong>
             <span>{user?.email || "Not provided"}</span>
           </div>
           <div className="detail-row">
-            <strong>Email Confirmed:</strong>
-            <span>{user?.emailConfirmed ? "Yes" : "No"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Phone Number:</strong>
-            <span>{user?.phoneNumber || "Not provided"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Phone Confirmed:</strong>
-            <span>{user?.phoneNumberConfirmed ? "Yes" : "No"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Two-Factor Enabled:</strong>
-            <span>{user?.twoFactorEnabled ? "Yes" : "No"}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Account Status:</strong>
+            <strong>Account Status</strong>
             <span>{user?.isBanned ? "Banned" : "Active"}</span>
           </div>
           <div className="detail-row">
-            <strong>Mute Status:</strong>
+            <strong>Mute Status</strong>
             <span>{user?.isMuted ? "Muted" : "Not Muted"}</span>
           </div>
         </div>
       </div>
     </div>
+    </LoaderWrapper>
   );
 };
 

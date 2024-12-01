@@ -40,7 +40,7 @@ const Menu = ({ menu, isOwner = false, venueId }) => {
           );
         }}
       >
-        <img
+        {/* <img
           src={
             curMenu.imageUrlPath
               ? curMenu.imageUrlPath
@@ -48,7 +48,7 @@ const Menu = ({ menu, isOwner = false, venueId }) => {
           }
           alt={`${curMenu.name} logo`}
           className="menu-image"
-        />
+        /> */}
         <div className="menu-info">
           <div className="menu-details">
             <h2 className="menu-name">{curMenu.name}</h2>
@@ -67,7 +67,7 @@ const Menu = ({ menu, isOwner = false, venueId }) => {
                   hidden
                   accept="image/*"
                 />
-                <div className="edit-image-btn">Edit Image</div>
+                {/* <div className="edit-image-btn">Edit Image</div> */}
               </label>
             </div>
           )}
