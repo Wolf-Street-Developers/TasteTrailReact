@@ -5,12 +5,14 @@ import MenuItemForm from "../MenuItemForm/MenuItemForm";
 import Button from "../Buttton/Button";
 import { setMenuItemImage, updateMenuItem } from "../../api/ownerService";
 import { deleteLike, postLike } from "../../api/menuService";
+import { useRole } from '../../RoleContext';
 
 const MenuItem = ({ item, isOwner=false }) => {
   const [isLiked, setIsLiked] = useState(item.isLiked);
   const [likes, setLikes] = useState(item.likes);
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [curMenuItem, setCurMenuItem] = useState(item)
+  const { role } = useRole();
 
   const handleLike = () => {
     if(!isLiked) {
@@ -46,11 +48,11 @@ const MenuItem = ({ item, isOwner=false }) => {
             <h2 className="menu-item-name">{curMenuItem.name}</h2>
             <p className="menu-item-description">{curMenuItem.description}</p>
             <p className="menu-item-price">${Number(curMenuItem.price).toFixed(2)}</p>
-            <div className="menu-item-actions">
+            { role !== 'No role' && <div className="menu-item-actions">
               <button className={`like-button ${isLiked ? "liked" : ""}`} onClick={handleLike}>
                 {isLiked ? "❤️" : "🤍"} {likes}
               </button>
-            </div>
+            </div>}
           </div>
         </div>
         {isOwner && <div className="menu-item-btns">

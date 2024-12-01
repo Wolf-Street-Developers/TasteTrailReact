@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import "./FeedbackItem.css"
 import { deleteFeedbackLike, postFeedbackLike } from '../../api/menuService';
+import { useRole } from '../../RoleContext';
 
 const FeedbackItem = ({ feedback }) => {
   const [isLiked, setIsLiked] = useState(feedback.isLiked);
   const [likes, setLikes] = useState(feedback.likes);
+  const { role } = useRole();
 
   const handleLike = () => {
     if(!isLiked) {
@@ -29,9 +31,9 @@ const FeedbackItem = ({ feedback }) => {
       </div>
       <div className="feedback-item-text">{feedback.text}</div>
       <div className="feedback-item-rating">Rating: {feedback.rating}/5</div>
-      <button className={`like-button ${isLiked ? "liked" : ""}`} onClick={handleLike}>
+      {role !== 'No role' && <button className={`like-button ${isLiked ? "liked" : ""}`} onClick={handleLike}>
         {isLiked ? "❤️" : "🤍"} {likes}
-      </button>
+      </button>}
     </div>
   );
 };

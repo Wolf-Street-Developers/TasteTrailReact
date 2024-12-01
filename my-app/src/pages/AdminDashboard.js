@@ -20,7 +20,7 @@ const AdminDashboard = () => {
     
     return (
         <div className="admin-dashboard-container">
-            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} filter={filter} setFilter={setFilter} handleSearch={handleSearch} filters = {[6,7,8,9]}/>
+            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} filter={filter} setFilter={setFilter} handleSearch={handleSearch}/>
             <div className="admin-dashboard-users">
                 {users.map((item)=><UserItem item={item} key={item.user.id}/>)}
             </div>

@@ -49,8 +49,8 @@ const UserItem = ({item}) => {
             </div>
             <div className="user-item-buttons">
                 <Button className={chosenRole===lastRole ? "user-item-inactive-button" : 'user-item-active-button'} onClick={handleSetRole}>Set role</Button>
-                <Button className={isBanned ? "user-item-inactive-button" : "user-item-active-button"} onClick={handleBan}>{isBanned ? "Unban" : "Ban"}</Button>
-                <Button className={isMuted ? "user-item-inactive-button" : "user-item-active-button"} onClick={handleMute}>{isMuted ? "Unmute" : "Mute"}</Button>
+                {/* <Button className={isBanned ? "user-item-inactive-button" : "user-item-active-button"} onClick={handleBan}>{isBanned ? "Unban" : "Ban"}</Button>
+                <Button className={isMuted ? "user-item-inactive-button" : "user-item-active-button"} onClick={handleMute}>{isMuted ? "Unmute" : "Mute"}</Button> */}
             </div>
         </div>
     )

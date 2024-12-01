@@ -5,17 +5,19 @@ import FeedbackForm from "../FeedbackForm/FeedbackForm";
 import { getFeedbacksByVenue, getMenuesById } from "../../api/menuService";
 import './TabComponent.css'
 import Pagination from '../Pagination/Pagination';
+import { useRole } from '../../RoleContext';
 
 const TabComponent = ( { isOwner, venueId }) => {
   const [activeTab, setActiveTab] = useState('menu');
   const [feedbacks, setFeedbacks] = useState([])
   const [menues, setMenues] = useState([])
+  const { role } = useRole();
 
   const [page, setPage] = useState(1)
   const [feedbackPage, setFeedbackPage] = useState(1)
 
   const countOnPage = 1
-  const countOnFeedbackPage = 1
+  const countOnFeedbackPage = 20
 
   const switchTab = (tab) => {
     setActiveTab(tab);
@@ -64,14 +66,14 @@ const TabComponent = ( { isOwner, venueId }) => {
         )}
         {activeTab === 'review' && (
             <div className="venue-feedbacks">
-                <FeedbackForm venueId = {venueId} updateFeedbacks={() => {
+                {role !== 'No role' && <FeedbackForm venueId = {venueId} updateFeedbacks={() => {
                     getFeedbacksByVenue(venueId, 0, feedbackPage, countOnFeedbackPage).then((res) => {
                         setFeedbacks(res.data.entities)
                     })}
-                }/>
+                }/>}
 
                 {feedbacks.map((item)=><FeedbackItem feedback={item} key={item.id}/>)}
-                <Pagination type="Feedbacks" setPage={setFeedbackPage} page={feedbackPage} count={countOnFeedbackPage} id={venueId}/>
+                {/* <Pagination type="Feedbacks" setPage={setFeedbackPage} page={feedbackPage} count={countOnFeedbackPage} id={venueId}/> */}
             </div>
         )}
       </div>

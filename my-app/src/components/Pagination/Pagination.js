@@ -18,6 +18,7 @@ const Pagination = (props) => {
             getMenueItemsById(props.id).then((res)=>{setPages(Math.ceil(res.data.amountOfEntities/props.count));})
         } else if(props.type === "Feedbacks") {
             getFeedbacksByVenue(props.id).then((res)=>{setPages(res.data.amountOfEntities/props.count)})
+            console.log(pages)
             setIsNotFixed(true)
         }
     },[])

@@ -18,10 +18,9 @@ const SignUpForm = () => {
     const handleSubmit = (e)=>{
         e.preventDefault();
 
-        register(userName, email, password).then(()=>{getUserRoles().then(rolesResponse => {
-          const role = rolesResponse.data.roles[0];
-          updateRole(role);  // Set the role in global state
-        }).then(()=>navigate('/'))}).catch(() => {})
+        register(userName, email, password)
+          .then( () => navigate('/login'))
+          .catch((err) => console.log(err))
     }
 
     return (

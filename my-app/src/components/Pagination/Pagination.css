@@ -1,0 +1,5 @@
+.page-buttons {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 50%;
+    left: 50%;
+}

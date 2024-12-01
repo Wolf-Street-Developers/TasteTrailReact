@@ -3,6 +3,7 @@ import Avatar from "../components/Avatar/Avatar";
 import { getUserRoles, setAvatar } from "../api/userService";
 import "./User.css";
 import LoaderWrapper from "../components/LoaderWrapper/LoaderWrapper";
+import { DivIcon } from "leaflet";
 
 const User = () => {
   const [user, setUser] = useState();
@@ -41,9 +42,9 @@ const User = () => {
           </div>
           <label onChange={handleFile} htmlFor="formId">
           <input name="" type="file" id="formId" hidden accept="image/*" /> 
-            <button className="edit-image-btn"> 
+            <div className="edit-image-btn"> 
               Edit Image 
-            </button> 
+            </div> 
           </label>
         </div>
 
@@ -56,10 +57,10 @@ const User = () => {
             <strong>Account Status</strong>
             <span>{user?.isBanned ? "Banned" : "Active"}</span>
           </div>
-          <div className="detail-row">
+          {/* <div className="detail-row">
             <strong>Mute Status</strong>
             <span>{user?.isMuted ? "Muted" : "Not Muted"}</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

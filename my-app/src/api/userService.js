@@ -17,8 +17,8 @@ export const getUserRoles = () => {
           autoClose: 3000,  // Close after 3 seconds
           hideProgressBar: true,
       });
-      throw error;
-    })
+      console.log(error)
+  })
 }
 
 
